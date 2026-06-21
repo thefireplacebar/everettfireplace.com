@@ -109,7 +109,7 @@ nav{
   position:fixed;top:0;left:0;right:0;z-index:50;
   display:flex;justify-content:space-between;align-items:center;
   padding:1rem 2rem;
-  background:linear-gradient(to bottom, rgba(12,10,14,.93), rgba(12,10,14,0));
+  background:#0c0a0e;
 }
 nav .mark{
   font-family:'Yesteryear',cursive;font-size:1.55rem;color:var(--neon-red);
@@ -122,7 +122,35 @@ nav ul a{
   transition:color .25s, text-shadow .25s;
 }
 nav ul a:hover{color:var(--chalk-cyan);text-shadow:0 0 10px rgba(111,227,255,.8)}
-@media(max-width:720px){nav ul{display:none}}
+.nav-toggle{display:none}
+.nav-toggle .menu-icon{
+  width:27px;height:27px;display:block;transform-origin:50% 80%;color:var(--neon-red);
+  animation:flameFlicker 1.7s ease-in-out infinite;transition:color .25s;
+  filter:drop-shadow(0 0 4px rgba(255,46,62,.85)) drop-shadow(0 0 9px rgba(255,120,40,.45));
+}
+nav.nav-open .nav-toggle .menu-icon{color:var(--chalk-orange)}
+@keyframes flameFlicker{
+  0%,100%{opacity:1;transform:scale(1,1)}
+  20%{opacity:.82;transform:scale(1.06,.96)}
+  45%{opacity:1;transform:scale(.96,1.06)}
+  70%{opacity:.9;transform:scale(1.04,.98)}
+}
+@media(max-width:720px){
+  header#top{min-height:auto;padding-bottom:2.5rem}
+  .nav-toggle{
+    display:flex;align-items:center;justify-content:center;
+    width:46px;height:46px;padding:8px;background:none;border:0;cursor:pointer;
+  }
+  nav ul{
+    display:none;position:absolute;top:100%;left:0;right:0;
+    flex-direction:column;gap:0;background:#0c0a0e;
+    padding:.4rem 0 .8rem;border-top:1px solid rgba(255,46,62,.25);
+    box-shadow:0 18px 40px rgba(0,0,0,.6);
+  }
+  nav.nav-open ul{display:flex}
+  nav ul li{width:100%}
+  nav ul a{display:block;padding:.95rem 2rem;font-size:1rem}
+}
 
 /* ---------- hero ---------- */
 header{
@@ -191,6 +219,14 @@ h1.sign{animation:fadeUp 1.2s .45s both;line-height:0}
 .btn.ghost:hover{border-color:var(--chalk-cyan);box-shadow:0 0 24px rgba(111,227,255,.3)}
 @keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
 
+/* ---------- today's special ---------- */
+.today-special{
+  text-align:center;padding:1.05rem 1.5rem;background:#0c0a0e;
+  font-family:'Permanent Marker',cursive;letter-spacing:.02em;
+  font-size:clamp(1.02rem,2.8vw,1.4rem);color:var(--chalk-yellow);
+  text-shadow:0 0 14px rgba(255,224,102,.4);
+}
+.today-special .ts-label{color:var(--neon-red);text-shadow:0 0 12px rgba(255,46,62,.55);margin-right:.35rem}
 /* ---------- LED ticker ---------- */
 .ticker{
   position:relative;z-index:3;overflow:hidden;white-space:nowrap;
@@ -426,6 +462,12 @@ h2 em{font-style:normal;color:var(--neon-red);text-shadow:0 0 18px rgba(255,46,6
 .map-frame:hover iframe{filter:none}
 
 /* footer */
+.pay-note{
+  max-width:60ch;margin:3rem auto 0;padding-top:2.6rem;
+  border-top:2px dotted var(--led-blue);
+  text-align:center;color:var(--chalk-dim);font-size:1.02rem;line-height:1.6;
+}
+.pay-note strong{color:var(--chalk-yellow);font-weight:600;white-space:nowrap}
 footer{
   text-align:center;padding:3.5rem 1.5rem 5rem;color:var(--chalk-dim);font-size:.9rem;
   border-top:2px dotted var(--led-blue);
@@ -438,7 +480,7 @@ footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
 @media (prefers-reduced-motion: reduce){
   .hero-video{display:none}
   header{background:url('assets/storefront-poster.jpg') center/cover}
-  .ticker .track,.led,.sign-photo{animation:none}
+  .ticker .track,.led,.sign-photo,.nav-toggle .menu-icon{animation:none}
 }
 </style>
 </head>
@@ -446,7 +488,7 @@ footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
 
 <nav>
   <a class="mark" href="#top">The Fireplace</a>
-  <ul>
+  <ul id="nav-menu">
     <li><a href="#story">The Story</a></li>
     <li><a href="#specials">Specials</a></li>
     <li><a href="#drinks">Drinks</a></li>
@@ -456,6 +498,11 @@ footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
     <li><a href="#reviews">Reviews</a></li>
     <li><a href="#visit">Find Us</a></li>
   </ul>
+  <button class="nav-toggle" type="button" title="Menu" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
+    <svg class="menu-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path fill="currentColor" d="M13.5.67s.74 2.65.74 4.8c0 2.06-1.35 3.73-3.41 3.73-2.07 0-3.63-1.67-3.63-3.73l.03-.36C5.21 7.51 4 10.62 4 14c0 4.42 3.58 8 8 8s8-3.58 8-8C20 8.61 17.41 3.8 13.5.67zM11.71 19c-1.78 0-3.22-1.4-3.22-3.14 0-1.62 1.05-2.76 2.81-3.12 1.77-.36 3.6-1.21 4.62-2.58.39 1.29.59 2.65.59 4.04 0 2.65-2.15 4.8-4.8 4.8z"/>
+    </svg>
+  </button>
 </nav>
 
 <header id="top">
@@ -481,6 +528,8 @@ footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
     </div>
   </div>
 </header>
+
+<div class="today-special" id="today-special"><span class="ts-label">Today's Special:</span> Cold beer, good games, and good company</div>
 
 <div class="ticker" aria-hidden="true">
   <div class="track" id="ticker-track">
@@ -751,6 +800,7 @@ footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
         width="100%" height="380" style="border:0" allowfullscreen="" loading="lazy"
         referrerpolicy="no-referrer-when-downgrade" title="Map to The Fireplace Bar, 2320 Everett Ave, Everett WA"></iframe>
     </div>
+    <p class="pay-note reveal">Good to know — we don't take <strong>tap-to-pay</strong> (swipe or insert your card), and we can't accept <strong>vertical IDs</strong>.</p>
   </section>
 </main>
 
@@ -802,6 +852,58 @@ if (location.hash) {
   };
   if (!check()) new MutationObserver((_, obs) => { if (check()) obs.disconnect(); })
     .observe(slot, { childList: true, subtree: true });
+})();
+
+// mobile hamburger menu toggle
+(() => {
+  const nav = document.querySelector('nav');
+  const btn = nav && nav.querySelector('.nav-toggle');
+  const menu = document.getElementById('nav-menu');
+  if (!nav || !btn || !menu) return;
+  const setOpen = (open) => {
+    nav.classList.toggle('nav-open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  };
+  btn.addEventListener('click', () => setOpen(!nav.classList.contains('nav-open')));
+  menu.addEventListener('click', (e) => { if (e.target.closest('a')) setOpen(false); });
+})();
+
+// random neon menu icon on load — flame / smoke / beer / eightball
+(() => {
+  const svg = document.querySelector('.nav-toggle .menu-icon');
+  if (!svg) return;
+  const icons = [
+    // flame (the one you liked)
+    '<path fill="currentColor" d="M13.5.67s.74 2.65.74 4.8c0 2.06-1.35 3.73-3.41 3.73-2.07 0-3.63-1.67-3.63-3.73l.03-.36C5.21 7.51 4 10.62 4 14c0 4.42 3.58 8 8 8s8-3.58 8-8C20 8.61 17.41 3.8 13.5.67zM11.71 19c-1.78 0-3.22-1.4-3.22-3.14 0-1.62 1.05-2.76 2.81-3.12 1.77-.36 3.6-1.21 4.62-2.58.39 1.29.59 2.65.59 4.04 0 2.65-2.15 4.8-4.8 4.8z"/>',
+    // smoke (mdi:smoke)
+    '<path fill="currentColor" d="M17 19v3h-2v-3c0-1.1-.9-2-2-2h-3c-2.8 0-5-2.2-5-5c0-1.2.4-2.2 1.1-3.1C3.8 8.5 2 6.4 2 4c0-.7.2-1.4.4-2h2.4c-.5.5-.8 1.2-.8 2c0 1.7 1.3 3 3 3h3v2c-1.7 0-3 1.3-3 3s1.3 3 3 3h3c2.2 0 4 1.8 4 4m.9-10.1C20.2 8.5 22 6.4 22 4c0-.7-.2-1.4-.4-2h-2.4c.5.5.8 1.2.8 2c0 1.7-1.3 3-3 3h-1.2c.1.3.2.6.2 1c0 1.7-1.3 3-3 3v2c2.8 0 5 2.2 5 5v4h2v-4c0-2.7-1.5-5-3.8-6.2c.9-.7 1.5-1.7 1.7-2.9"/>',
+    // beer (mdi:beer)
+    '<path fill="currentColor" d="M4 2h15l-2 20H6zm2.2 2l1.6 16h1L7.43 6.34C8.5 6 9.89 5.89 11 7c1.56 1.56 4.33.69 5.5.23L16.8 4z"/>',
+    // eightball (mdi:numeric-8-circle)
+    '<path fill="currentColor" d="M11 13h2v2h-2zm0-4h2v2h-2zm0 8h2a2 2 0 0 0 2-2v-1.5a1.5 1.5 0 0 0-1.5-1.5a1.5 1.5 0 0 0 1.5-1.5V9a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v1.5a1.5 1.5 0 0 0 1.5 1.5A1.5 1.5 0 0 0 9 13.5V15a2 2 0 0 0 2 2m1-15a10 10 0 0 1 10 10a10 10 0 0 1-10 10A10 10 0 0 1 2 12A10 10 0 0 1 12 2"/>'
+  ];
+  svg.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+})();
+
+// today's special — date-based (uses the visitor's local day)
+(() => {
+  const el = document.getElementById('today-special');
+  if (!el) return;
+  const specials = [
+    "Industry Night — $2 off 6 PM–close with your MAST/food handler card, plus free pool all day", // Sun
+    "All Day Happy Hour",                                  // Mon
+    "Trivia 7–9 PM — $1 off drinks while you play",        // Tue
+    "$1 off whiskey (well excluded — we have standards)",  // Wed
+    "Ladies Night — $1 off drinks after 6 PM",             // Thu
+    "Happy Hour 3–6 PM",                                   // Fri
+    "Cold beer, good games, and good company"              // Sat
+  ];
+  // bar day rolls over at 2 AM — before 2 AM still counts as the previous (bar) day
+  const now = new Date();
+  let day = now.getDay();
+  if (now.getHours() < 2) day = (day + 6) % 7;
+  el.innerHTML = '<span class="ts-label">Today\'s Special:</span> ' + specials[day];
 })();
 </script>
 
