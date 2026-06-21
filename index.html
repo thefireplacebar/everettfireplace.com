@@ -117,7 +117,7 @@ h1.sign{animation:fadeUp 1.2s .45s both;line-height:0}
   animation:fadeUp 1.2s 1s both;
 }
 .hero-meta span b{color:#fff;font-weight:600}
-.hero-cta{margin-top:2.5rem;animation:fadeUp 1.2s 1.15s both}
+.hero-cta{margin-top:2.5rem;animation:fadeUp 1.2s 1.15s both;display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center}
 .btn{
   display:inline-block;padding:.9rem 2.3rem;
   font-size:.85rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
@@ -161,6 +161,8 @@ section{padding:6rem 1.5rem;max-width:1120px;margin:0 auto}
   font-family:'Permanent Marker',cursive;font-size:1rem;letter-spacing:.12em;
   color:var(--chalk-orange);margin-bottom:.8rem;
 }
+.head-inline{display:flex;align-items:baseline;gap:.9rem;flex-wrap:wrap}
+.head-inline .kicker{margin-bottom:0}
 h2{
   font-family:'Passion One',sans-serif;font-weight:700;
   font-size:clamp(2.2rem,5.5vw,3.6rem);line-height:1.04;color:#fff;
@@ -418,7 +420,9 @@ footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
       <span><b>(425) 259-9911</b></span>
     </div>
     <div class="hero-cta">
-      <a class="btn" href="#specials">See the Specials</a>
+      <a class="btn" href="#specials">Daily Specials</a>
+      <a class="btn" href="https://www.instagram.com/fireplacebar.everett/" target="_blank" rel="noopener">Instagram</a>
+      <a class="btn" href="https://www.facebook.com/profile.php?id=100063573522795" target="_blank" rel="noopener">Facebook</a>
     </div>
   </div>
 </header>
@@ -441,9 +445,9 @@ footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
     <div class="story">
       <div class="reveal">
         <p class="kicker">The Story</p>
-        <h2>Everett's <em>oldest</em> running bar.</h2>
+        <h2>Everett's <em>oldest</em> running bar</h2>
         <p>Bars come and go. <strong>The Fireplace has stayed lit for more than 85 years</strong> — through booms, busts, and everything Everett has thrown at it. No gimmicks, no rebrand, no craft-cocktail pivot. Just a proper neighborhood dive that knows exactly what it is.</p>
-        <p>House rules are simple: <strong>no politics or religion at the bar</strong>, everybody gets a fair pour, and <strong>everyone's welcome</strong> — and we mean everyone. You'll find the Pride flags right next to the pull tabs.</p>
+        <p>House rules are simple: <strong>no politics or religion at the bar</strong>, everybody gets a fair pour, and <strong>everyone's welcome</strong> — and we mean everyone.</p>
         <p>Come for a beer. Stay for the next 85 years.</p>
       </div>
       <figure class="snap reveal">
@@ -456,7 +460,7 @@ footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
   <section id="specials">
     <div class="reveal">
       <p class="kicker">Straight off the chalkboard</p>
-      <h2>Daily <em>specials.</em></h2>
+      <h2>Daily <em>specials</em></h2>
     </div>
     <div class="spec-grid">
       <div class="led reveal"><div class="board spec"><h3>Monday</h3><p><b>All Day Happy Hour.</b> The only good thing about Mondays.</p></div></div>
@@ -469,9 +473,9 @@ footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
   </section>
 
   <section id="drinks">
-    <div class="reveal">
+    <div class="reveal head-inline">
       <p class="kicker">Drink it your way</p>
-      <h2>The <em>board.</em></h2>
+      <h2>The <em>board</em></h2>
     </div>
     <div class="led blue drink-wrap reveal">
       <div class="board drink-board">
@@ -523,14 +527,14 @@ footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
         </div>
       </div>
     </div>
-    <p class="fineprint">Board rotates — what's pouring tonight is whatever the chalk says.</p>
+    <p class="fineprint">Board Rotates, The chalk board is always right</p>
   </section>
 
   <section id="grub">
     <div class="grub-grid">
       <div class="reveal">
         <p class="kicker">Grub</p>
-        <h2>Bar food, done <em>right.</em></h2>
+        <h2>Bar food</h2>
         <p style="color:var(--chalk-dim);font-size:1.1rem;margin-bottom:1.6rem">No foam, no tasting menu. Just the stuff that tastes best on a barstool, served until late.</p>
         <ul class="menu-list">
           <li>Fried Pickles <span class="dots"></span> <span class="price">$7</span></li>
@@ -544,7 +548,6 @@ footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
           <li>Pork &amp; Veg Egg Rolls <span class="dots"></span> <span class="price">$6</span></li>
           <li>Fries <span class="dots"></span> <span class="price">$4</span></li>
         </ul>
-        <p class="fineprint">Prices per the board — subject to the bartender's chalk.</p>
       </div>
       <figure class="snap reveal" style="transform:rotate(-1.5deg)">
         <img src="assets/bar.jpg" alt="The bar at The Fireplace — taps, full liquor shelf, pull tabs, and the game on" loading="lazy">
@@ -556,22 +559,20 @@ footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
   <section id="around">
     <div class="reveal">
       <p class="kicker">Around the bar</p>
-      <h2>Plenty of ways to <em>lose</em> a friendly bet.</h2>
+      <h2>Plenty of ways to <em>lose</em> a friendly bet</h2>
     </div>
     <div class="gallery">
       <figure class="shot wide reveal"><img src="assets/pool.jpg" alt="Pool table under green lamps at The Fireplace" loading="lazy"><figcaption>rack 'em — free all day Sundays</figcaption></figure>
       <figure class="shot reveal"><img src="assets/darts.jpg" alt="BullShooter electronic dart boards in the red-lit dart room" loading="lazy"><figcaption>the dart room. four boards, zero excuses</figcaption></figure>
       <figure class="shot reveal"><img src="assets/goldentee.jpg" alt="Golden Tee arcade golf machine" loading="lazy"><figcaption>Golden Tee — $1 for 3 holes</figcaption></figure>
       <figure class="shot wide reveal"><img src="assets/patio.jpg" alt="Covered back patio with picnic tables, string lights and vintage beer signs" loading="lazy"><figcaption>the patio — we even have sunscreen, ask the bartender</figcaption></figure>
-      <figure class="shot reveal"><img src="assets/worldcup.jpg" alt="FIFA World Cup 26 banner above the stone fireplace" loading="lazy"><figcaption>World Cup 26 matches, on every screen</figcaption></figure>
-      <figure class="shot reveal"><img src="assets/chalkboards.jpg" alt="Hand-chalked drink menu and daily specials boards lined with LED lights" loading="lazy"><figcaption>the boards never lie</figcaption></figure>
     </div>
   </section>
 
   <section id="champions">
     <div class="reveal">
       <p class="kicker">The Wall of Flame</p>
-      <h2>House <em>champions.</em></h2>
+      <h2>House <em>champions</em></h2>
       <p style="color:var(--chalk-dim);font-size:1.1rem;max-width:62ch">Bragging rights at The Fireplace are earned the hard way — over a pot of chili or a round of golf. These names are screwed into the wall in brass. Immortalized. Insufferable about it.</p>
     </div>
     <div class="hof-grid">
@@ -639,7 +640,7 @@ footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
   <section id="reviews">
     <div class="reveal">
       <p class="kicker">Word on the Ave</p>
-      <h2>Don't take <em>our</em> word for it.</h2>
+      <h2>Don't take <em>our</em> word for it</h2>
       <p style="color:var(--chalk-dim);font-size:1.1rem;max-width:60ch">Regulars, first-timers, dart leagues and drag brunch crowds — they've all left their two cents on Google. Read the real, unfiltered reviews and see why folks keep pulling up a stool.</p>
     </div>
     <!--
@@ -674,7 +675,7 @@ footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
   <section id="visit">
     <div class="reveal">
       <p class="kicker">Find us</p>
-      <h2>The neon's <em>on.</em></h2>
+      <h2>The neon's <em>on</em></h2>
     </div>
     <div class="visit-grid">
       <div class="visit-block reveal">
@@ -690,10 +691,6 @@ footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
         <h3>Where &amp; How</h3>
         <p class="addr"><a href="https://maps.google.com/?q=2320+Everett+Ave,+Everett,+WA+98201" target="_blank" rel="noopener">2320 Everett Ave<br>Everett, WA 98201</a></p>
         <p class="phone"><a href="tel:+14252599911">(425) 259-9911</a></p>
-        <div class="socials">
-          <a href="https://www.instagram.com/fireplacebar.everett/" target="_blank" rel="noopener">Instagram</a>
-          <a href="https://www.facebook.com/profile.php?id=100063573522795" target="_blank" rel="noopener">Facebook</a>
-        </div>
       </div>
     </div>
     <div class="map-frame reveal">
