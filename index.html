@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>document.documentElement.classList.add('js');</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Fireplace Bar — Everett's Oldest Running Bar & Historic Dive</title>
-<meta name="description" content="The Fireplace Bar is Everett's oldest dive bar — a friendly, historic neighborhood spot with pool, darts, Golden Tee, trivia, a patio, and cold beer. 2320 Everett Ave, Everett, WA.">
+<meta name="description" content="The Fireplace Bar is Everett's oldest dive bar — a friendly, historic neighborhood spot with pool, darts, Golden Tee, trivia, a patio, and cold beer. 21+ only, ATM on site, free parking in back. 2320 Everett Ave, Everett, WA.">
 <link rel="canonical" href="https://everettfireplace.com/">
 <meta name="theme-color" content="#0c0a0e">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <meta name="keywords" content="inclusive bar Everett, all-inclusive bar, LGBTQ+ friendly bar, gay friendly dive bar, everyone welcome, all genders welcome, all are welcome regardless of politics, safe space, friendly historic dive bar Everett WA">
 
 <!-- Open Graph / social cards -->
@@ -31,13 +33,17 @@
   "url": "https://everettfireplace.com",
   "telephone": "+1-425-259-9911",
   "priceRange": "$",
+  "paymentAccepted": "Cash, Credit Card",
+  "foundingDate": "1948",
   "image": "https://everettfireplace.com/assets/storefront-poster.jpg",
   "slogan": "Everyone's welcome at this fire.",
   "amenityFeature": [
     { "@type": "LocationFeatureSpecification", "name": "LGBTQ+ friendly", "value": true },
     { "@type": "LocationFeatureSpecification", "name": "Transgender safespace", "value": true },
     { "@type": "LocationFeatureSpecification", "name": "Welcomes all genders", "value": true },
-    { "@type": "LocationFeatureSpecification", "name": "Welcoming to all political views", "value": true }
+    { "@type": "LocationFeatureSpecification", "name": "Welcoming to all political views", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Free parking", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "ATM on site", "value": true }
   ],
   "address": {
     "@type": "PostalAddress",
@@ -80,8 +86,8 @@
   --chalk-pink: #ff7bb0;
   --chalk-cyan: #6fe3ff;
   --chalk-yellow: #ffe066;
-  --led-purple: #8a7bff;
-  --led-blue: #5e8bff;
+  --led-purple: #ffa53d;  /* warm bulb (amber) — was purple */
+  --led-blue: #ff8c2b;    /* warm bulb (ember) — was blue */
   --felt-green: #2e8f5b;
 }
 *{margin:0;padding:0;box-sizing:border-box}
@@ -90,7 +96,7 @@ body{
   background:var(--ink);
   color:var(--chalk);
   font-family:'Barlow Semi Condensed',sans-serif;
-  font-weight:300;
+  font-weight:400;
   line-height:1.65;
   overflow-x:hidden;
 }
@@ -122,7 +128,7 @@ nav ul a{
   letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;
   transition:color .25s, text-shadow .25s;
 }
-nav ul a:hover{color:var(--chalk-cyan);text-shadow:0 0 10px rgba(111,227,255,.8)}
+nav ul a:hover{color:var(--chalk-orange);text-shadow:0 0 10px rgba(255,165,61,.8)}
 .nav-toggle{display:none}
 .nav-toggle .menu-icon, .brand-flame{
   width:27px;height:27px;display:block;transform-origin:50% 80%;color:var(--neon-red);
@@ -165,10 +171,7 @@ header{
   position:relative;min-height:100svh;
   display:flex;flex-direction:column;justify-content:center;align-items:center;
   text-align:center;padding:6rem 1.5rem 5rem;overflow:hidden;
-}
-.hero-video{
-  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-  filter:saturate(1.1) contrast(1.05);
+  background:var(--ink) url('assets/storefront-poster.jpg') center/cover no-repeat;
 }
 .hero-shade{
   position:absolute;inset:0;
@@ -210,6 +213,8 @@ h1.sign{animation:fadeUp 1.2s .45s both;line-height:0}
   animation:fadeUp 1.2s 1s both;
 }
 .hero-meta span b{color:#fff;font-weight:600}
+.hero-meta a{color:inherit;text-decoration:none;transition:color .25s}
+.hero-meta a:hover b{color:var(--chalk-orange)}
 .hero-cta{margin-top:2.5rem;animation:fadeUp 1.2s 1.15s both;display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center}
 .btn{
   display:inline-block;padding:.9rem 2.3rem;
@@ -248,11 +253,8 @@ h1.sign{animation:fadeUp 1.2s .45s both;line-height:0}
   font-family:'Permanent Marker',cursive;font-size:1.02rem;
   margin:0 1.6rem;letter-spacing:.04em;
 }
-.ticker span:nth-child(5n+1){color:var(--chalk-orange)}
-.ticker span:nth-child(5n+2){color:var(--chalk-lime)}
-.ticker span:nth-child(5n+3){color:var(--chalk-pink)}
-.ticker span:nth-child(5n+4){color:var(--chalk-cyan)}
-.ticker span:nth-child(5n+5){color:var(--chalk-yellow)}
+.ticker span:nth-child(odd){color:var(--chalk-yellow)}
+.ticker span:nth-child(even){color:var(--chalk-orange)}
 @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* ---------- sections ---------- */
@@ -268,7 +270,7 @@ h2{
   letter-spacing:.015em;margin-bottom:1.4rem;text-transform:uppercase;
 }
 h2 em{font-style:normal;color:var(--neon-red);text-shadow:0 0 18px rgba(255,46,62,.55)}
-.reveal{opacity:0;transform:translateY(34px);transition:opacity .9s ease, transform .9s ease}
+.js .reveal{opacity:0;transform:translateY(34px);transition:opacity .9s ease, transform .9s ease}
 .reveal.in{opacity:1;transform:none}
 
 /* LED frame — dots show only on the perimeter */
@@ -279,7 +281,7 @@ h2 em{font-style:normal;color:var(--neon-red);text-shadow:0 0 18px rgba(255,46,6
   animation:ledpulse 2.6s ease-in-out infinite;
 }
 .led.blue{background-image:radial-gradient(circle, var(--led-blue) 2.1px, transparent 3.1px)}
-.led.pink{background-image:radial-gradient(circle, var(--chalk-pink) 2.1px, transparent 3.1px)}
+.led.pink{background-image:radial-gradient(circle, var(--led-purple) 2.1px, transparent 3.1px)}
 @keyframes ledpulse{0%,100%{filter:brightness(1)}50%{filter:brightness(1.45)}}
 .board{
   background:linear-gradient(170deg,#141019,#0e0b12);
@@ -303,6 +305,14 @@ h2 em{font-style:normal;color:var(--neon-red);text-shadow:0 0 18px rgba(255,46,6
 }
 @media(max-width:840px){.story{grid-template-columns:1fr}.story .snap{transform:none}}
 
+/* history timeline */
+.timeline{margin-top:2.6rem;border-left:2px solid rgba(255,46,62,.35);padding-left:1.9rem;display:grid;gap:1.8rem}
+.tl-item{position:relative}
+.tl-item::before{content:"";position:absolute;left:calc(-1.9rem - 8px);top:.4rem;width:13px;height:13px;border-radius:50%;background:var(--neon-red);box-shadow:0 0 12px rgba(255,46,62,.7);border:2px solid var(--ink)}
+.tl-year{font-family:'Passion One',sans-serif;font-weight:700;font-size:1.4rem;color:var(--chalk-orange);letter-spacing:.03em;line-height:1;text-transform:uppercase}
+.tl-name{font-family:'Permanent Marker',cursive;color:#fff;font-size:1.18rem;margin:.2rem 0 .35rem}
+.tl-item p{color:var(--chalk-dim);font-size:1.05rem;max-width:56ch;margin:0}
+
 /* specials */
 .spec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem;margin-top:2.4rem}
 .spec h3{
@@ -310,12 +320,7 @@ h2 em{font-style:normal;color:var(--neon-red);text-shadow:0 0 18px rgba(255,46,6
 }
 .spec p{font-size:1.02rem;color:var(--chalk-dim)}
 .spec p b{color:var(--chalk);font-weight:600}
-.spec:nth-child(6n+1) h3{color:var(--chalk-orange)}
-.spec:nth-child(6n+2) h3{color:var(--chalk-lime)}
-.spec:nth-child(6n+3) h3{color:var(--chalk-pink)}
-.spec:nth-child(6n+4) h3{color:var(--chalk-cyan)}
-.spec:nth-child(6n+5) h3{color:var(--chalk-yellow)}
-.spec:nth-child(6n+6) h3{color:#ff8b6b}
+.spec h3{color:var(--chalk-orange)}
 @media(max-width:840px){.spec-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:540px){.spec-grid{grid-template-columns:1fr}}
 
@@ -328,10 +333,7 @@ h2 em{font-style:normal;color:var(--neon-red);text-shadow:0 0 18px rgba(255,46,6
   font-family:'Permanent Marker',cursive;font-weight:400;font-size:1.25rem;
   margin-bottom:.9rem;padding-bottom:.4rem;border-bottom:2px dashed rgba(242,234,216,.2);
 }
-.drink-col:nth-child(1) h3{color:var(--chalk-orange)}
-.drink-col:nth-child(2) h3{color:var(--chalk-cyan)}
-.drink-col:nth-child(3) h3{color:var(--chalk-lime)}
-.drink-col:nth-child(4) h3{color:var(--chalk-pink)}
+.drink-col h3{color:var(--chalk-orange)}
 .drink-col ul{list-style:none}
 .drink-col li{padding:.3rem 0;font-size:1.02rem;color:var(--chalk)}
 .drink-col li small{color:var(--chalk-dim);font-style:italic}
@@ -348,7 +350,6 @@ h2 em{font-style:normal;color:var(--neon-red);text-shadow:0 0 18px rgba(255,46,6
 }
 .menu-list li .dots{flex:1;border-bottom:2px dotted rgba(242,234,216,.25);transform:translateY(-4px)}
 .menu-list li .price{font-family:'Permanent Marker',cursive;color:var(--chalk-yellow);font-size:1.05rem}
-.menu-list li:nth-child(odd) .price{color:var(--chalk-lime)}
 @media(max-width:840px){.grub-grid{grid-template-columns:1fr}}
 
 /* gallery */
@@ -362,12 +363,7 @@ h2 em{font-style:normal;color:var(--neon-red);text-shadow:0 0 18px rgba(255,46,6
   background:linear-gradient(to top, rgba(12,10,14,.92), transparent);
   font-family:'Permanent Marker',cursive;font-size:1rem;
 }
-.shot:nth-child(6n+1) figcaption{color:var(--chalk-cyan)}
-.shot:nth-child(6n+2) figcaption{color:var(--chalk-orange)}
-.shot:nth-child(6n+3) figcaption{color:var(--chalk-pink)}
-.shot:nth-child(6n+4) figcaption{color:var(--chalk-lime)}
-.shot:nth-child(6n+5) figcaption{color:var(--chalk-yellow)}
-.shot:nth-child(6n+6) figcaption{color:#ff8b6b}
+.shot figcaption{color:var(--chalk)}
 .shot.wide{grid-column:span 2}
 @media(max-width:840px){.gallery{grid-template-columns:1fr 1fr}.shot.wide{grid-column:span 2}}
 @media(max-width:540px){.gallery{grid-template-columns:1fr}.shot.wide{grid-column:span 1}}
@@ -396,7 +392,7 @@ h2 em{font-style:normal;color:var(--neon-red);text-shadow:0 0 18px rgba(255,46,6
   color:var(--gold);text-shadow:0 1px 0 #000, 0 0 10px rgba(231,200,120,.25);
 }
 .brass-head .bh-sub{
-  font-family:'Rokkitt',serif;font-style:italic;font-size:.92rem;letter-spacing:.03em;
+  font-family:serif;font-style:italic;font-size:.92rem;letter-spacing:.03em;
   color:#d9be84;margin-top:.1rem;
 }
 .brass-head .bh-cols{display:flex;justify-content:space-around;margin-top:.35rem;
@@ -409,7 +405,7 @@ h2 em{font-style:normal;color:var(--neon-red);text-shadow:0 0 18px rgba(255,46,6
   box-shadow:inset 0 0 8px rgba(0,0,0,.6);
 }
 .np .yr{font-size:.62rem;letter-spacing:.16em;color:#a98e50;display:block}
-.np .who{font-family:'Rokkitt',serif;font-weight:600;font-size:.96rem;color:var(--gold);line-height:1.2}
+.np .who{font-family:serif;font-weight:600;font-size:.96rem;color:var(--gold);line-height:1.2}
 .np .who small{display:block;font-weight:400;font-size:.82rem;color:#cdb072}
 .np.two{display:flex;justify-content:space-between;gap:.5rem;text-align:left}
 .np.two .who{font-size:.82rem;flex:1}
@@ -429,7 +425,7 @@ h2 em{font-style:normal;color:var(--neon-red);text-shadow:0 0 18px rgba(255,46,6
 .stars{color:var(--chalk-yellow);letter-spacing:.16em;text-shadow:0 0 12px rgba(255,224,102,.55)}
 .rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem;margin-top:2.4rem}
 .rev-card .rev-quote{font-size:1.06rem;color:var(--chalk);margin:.7rem 0 1rem;font-style:italic}
-.rev-card .rev-name{font-family:'Permanent Marker',cursive;font-size:.95rem;color:var(--chalk-cyan)}
+.rev-card .rev-name{font-family:'Permanent Marker',cursive;font-size:.95rem;color:var(--chalk-orange)}
 .rev-cta{text-align:center;margin-top:2.4rem}
 @media(max-width:840px){.rev-grid{grid-template-columns:1fr}}
 
@@ -437,7 +433,7 @@ h2 em{font-style:normal;color:var(--neon-red);text-shadow:0 0 18px rgba(255,46,6
 .visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;margin-top:2.4rem}
 .visit-block h3{
   font-family:'Permanent Marker',cursive;font-size:1.1rem;
-  color:var(--chalk-cyan);margin-bottom:1rem;font-weight:400;
+  color:var(--chalk-orange);margin-bottom:1rem;font-weight:400;
 }
 .hours-table{width:100%;border-collapse:collapse}
 .hours-table td{padding:.65rem 0;border-bottom:1px solid rgba(242,234,216,.1);font-size:1.05rem}
@@ -486,9 +482,8 @@ footer .mark{
 }
 footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
 @media (prefers-reduced-motion: reduce){
-  .hero-video{display:none}
-  header{background:url('assets/storefront-poster.jpg') center/cover}
   .ticker .track,.led,.sign-photo,.nav-toggle .menu-icon,.brand-flame{animation:none}
+  .js .reveal{opacity:1;transform:none;transition:none}
 }
 </style>
 </head>
@@ -501,6 +496,7 @@ footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
   </a>
   <ul id="nav-menu">
     <li><a href="#story">The Story</a></li>
+    <li><a href="#history">History</a></li>
     <li><a href="#specials">Specials</a></li>
     <li><a href="#drinks">Drinks</a></li>
     <li><a href="#grub">Grub</a></li>
@@ -517,21 +513,18 @@ footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
 </nav>
 
 <header id="top">
-  <video class="hero-video" autoplay muted loop playsinline poster="assets/storefront-poster.jpg">
-    <source src="assets/storefront.mp4" type="video/mp4">
-  </video>
   <div class="hero-shade"></div>
   <div class="hero-inner">
     <h1 class="sign">
       <img class="sign-photo" src="assets/sign.jpg" alt="The Fireplace — the bar's neon sign: a red awning reading The in white script, above white channel letters spelling FIREPLACE crowned with red neon flames">
     </h1>
-    <p class="est">Everett's oldest running bar<br>85+ years strong</p>
+    <p class="est">Everett's oldest running bar<br>Est. 1948</p>
     <p class="sub">Cold beer, good games, and a stool that's been waiting for you since before your grandfather's time.</p>
     <p class="today-special" id="today-special"><span class="ts-label">Today's Special</span> Cold beer, good games, and good company</p>
     <div class="hero-meta">
       <span><b>2320 Everett Ave</b> · Everett, WA</span>
       <span>Open daily @ <b>11 AM</b></span>
-      <span><b>(425) 259-9911</b></span>
+      <span><a href="tel:+14252599911"><b>(425) 259-9911</b></a></span>
     </div>
     <div class="hero-cta">
       <a class="btn" href="#specials">Daily Specials</a>
@@ -560,14 +553,44 @@ footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
       <div class="reveal">
         <p class="kicker">The Story</p>
         <h2>Everett's <em>oldest</em> running bar</h2>
-        <p>Bars come and go. <strong>The Fireplace has stayed lit for more than 85 years</strong> — through booms, busts, and everything Everett has thrown at it. No gimmicks, no rebrand, no craft-cocktail pivot. Just a proper neighborhood dive that knows exactly what it is.</p>
+        <p>Bars come and go. <strong>The Fireplace has stayed lit since 1948</strong> — through booms, busts, and everything Everett has thrown at it. No gimmicks, no rebrand, no craft-cocktail pivot. Just a proper neighborhood dive that knows exactly what it is.</p>
         <p>House rules are simple: <strong>no politics or religion at the bar</strong>, everybody gets a fair pour, and <strong>everyone's welcome</strong> — and we mean everyone.</p>
         <p>Come for a beer. Stay for the next 85 years.</p>
       </div>
       <figure class="snap reveal">
-        <img src="assets/pride-wall.jpg" alt="The Fireplace Bar wall with hand-painted logo, Everett Pride posters, and tin signs" loading="lazy">
+        <img src="assets/pride-wall.webp" alt="The Fireplace Bar wall with hand-painted logo, Everett Pride posters, and tin signs" loading="lazy">
         <figcaption>house rules &amp; local love, on the wall</figcaption>
       </figure>
+    </div>
+  </section>
+
+  <section id="history">
+    <div class="reveal">
+      <p class="kicker">Before the neon</p>
+      <h2>A little <em>history</em></h2>
+      <p style="color:var(--chalk-dim);font-size:1.1rem;max-width:60ch">Same four walls at 2320 Everett Ave since 1920 — only the name over the door has changed.</p>
+    </div>
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <div class="tl-year">1920</div>
+        <div class="tl-name">The building goes up</div>
+        <p>The bones of 2320 Everett Ave are laid — same address, same walls, ever since.</p>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-year">1929 – 1940s</div>
+        <div class="tl-name">Brown's Mug</div>
+        <p>The corner's watering hole pours under the name Brown's Mug.</p>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-year">Mid-1940s – 1947</div>
+        <div class="tl-name">Morrow's Tavern</div>
+        <p>Cliff &amp; Esther Morrow, Everett locals, keep the lights on through the war years.</p>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-year">1948</div>
+        <div class="tl-name">The Fireplace Tavern</div>
+        <p>The Morrows hand it on, the neon goes up, and The Fireplace is born — still lit today.</p>
+      </div>
     </div>
   </section>
 
@@ -664,7 +687,7 @@ footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
         </ul>
       </div>
       <figure class="snap reveal" style="transform:rotate(-1.5deg)">
-        <img src="assets/bar.jpg" alt="The bar at The Fireplace — taps, full liquor shelf, pull tabs, and the game on" loading="lazy">
+        <img src="assets/bar.webp" alt="The bar at The Fireplace — taps, full liquor shelf, pull tabs, and the game on" loading="lazy">
         <figcaption>the office. taps left, tabs up top, game on.</figcaption>
       </figure>
     </div>
@@ -676,10 +699,10 @@ footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
       <h2>Plenty of ways to <em>lose</em> a friendly bet</h2>
     </div>
     <div class="gallery">
-      <figure class="shot wide reveal"><img src="assets/pool.jpg" alt="Pool table under green lamps at The Fireplace" loading="lazy"><figcaption>rack 'em — free all day Sundays</figcaption></figure>
-      <figure class="shot reveal"><img src="assets/darts.jpg" alt="BullShooter electronic dart boards in the red-lit dart room" loading="lazy"><figcaption>the dart room. four boards, zero excuses</figcaption></figure>
-      <figure class="shot reveal"><img src="assets/goldentee.jpg" alt="Golden Tee arcade golf machine" loading="lazy"><figcaption>Golden Tee — $1 for 3 holes</figcaption></figure>
-      <figure class="shot wide reveal"><img src="assets/patio.jpg" alt="Covered back patio with picnic tables, string lights and vintage beer signs" loading="lazy"><figcaption>the patio — we even have sunscreen, ask the bartender</figcaption></figure>
+      <figure class="shot wide reveal"><img src="assets/pool.webp" alt="Pool table under green lamps at The Fireplace" loading="lazy"><figcaption>rack 'em — free all day Sundays</figcaption></figure>
+      <figure class="shot reveal"><img src="assets/darts.webp" alt="BullShooter electronic dart boards in the red-lit dart room" loading="lazy"><figcaption>the dart room. four boards, zero excuses</figcaption></figure>
+      <figure class="shot reveal"><img src="assets/goldentee.webp" alt="Golden Tee arcade golf machine" loading="lazy"><figcaption>Golden Tee — $1 for 3 holes</figcaption></figure>
+      <figure class="shot wide reveal"><img src="assets/patio.webp" alt="Covered back patio with picnic tables, string lights and vintage beer signs" loading="lazy"><figcaption>the patio — we even have sunscreen, ask the bartender</figcaption></figure>
     </div>
   </section>
 
@@ -810,13 +833,13 @@ footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
         width="100%" height="380" style="border:0" allowfullscreen="" loading="lazy"
         referrerpolicy="no-referrer-when-downgrade" title="Map to The Fireplace Bar, 2320 Everett Ave, Everett WA"></iframe>
     </div>
-    <p class="pay-note reveal">No <strong>vertical IDs</strong><br><strong>Cash or Credit Only, No Tap</strong></p>
+    <p class="pay-note reveal"><strong>21+ only</strong> — no vertical IDs<br><strong>Cash or Credit only — no tap</strong> · ATM on site<br>Free parking in the back lot</p>
   </section>
 </main>
 
 <footer>
   <span class="mark">The Fireplace</span>
-  <p class="tag">2320 Everett Ave · Everett, WA · Since way back</p>
+  <p class="tag">2320 Everett Ave · Everett, WA · Est. 1948</p>
   <p style="margin-top:1rem;opacity:.65">Everyone's welcome at this fire. 🔥</p>
 </footer>
 
