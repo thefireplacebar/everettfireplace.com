@@ -3,8 +3,65 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Fireplace Bar — Everett's Oldest Running Bar</title>
-<meta name="description" content="The Fireplace Bar — Everett's oldest running bar, 85+ years strong. Pool, darts, Golden Tee, trivia, patio, cold beer and good company. 2320 Everett Ave, Everett WA.">
+<title>The Fireplace Bar — Everett's Oldest Running Bar & Historic Dive</title>
+<meta name="description" content="The Fireplace Bar is Everett's oldest dive bar — a friendly, historic neighborhood spot with pool, darts, Golden Tee, trivia, a patio, and cold beer. 2320 Everett Ave, Everett, WA.">
+<link rel="canonical" href="https://everettfireplace.com/">
+<meta name="theme-color" content="#0c0a0e">
+<meta name="keywords" content="inclusive bar Everett, all-inclusive bar, LGBTQ+ friendly bar, gay friendly dive bar, everyone welcome, all genders welcome, all are welcome regardless of politics, safe space, friendly historic dive bar Everett WA">
+
+<!-- Open Graph / social cards -->
+<meta property="og:type" content="business.business">
+<meta property="og:site_name" content="The Fireplace Bar">
+<meta property="og:title" content="The Fireplace Bar — Everett's Oldest Running Bar & Historic Dive">
+<meta property="og:description" content="Everett's oldest dive bar — a friendly, historic neighborhood spot with pool, darts, Golden Tee, trivia, a patio, and cold beer.">
+<meta property="og:url" content="https://everettfireplace.com/">
+<meta property="og:image" content="https://everettfireplace.com/assets/storefront-poster.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Fireplace Bar — Everett's Oldest Running Bar & Historic Dive">
+<meta name="twitter:description" content="Everett's oldest dive bar — a friendly, historic neighborhood spot with pool, darts, Golden Tee, trivia, a patio, and cold beer.">
+<meta name="twitter:image" content="https://everettfireplace.com/assets/storefront-poster.jpg">
+
+<!-- Local business structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BarOrPub",
+  "name": "The Fireplace Bar",
+  "description": "Everett's oldest dive bar — a friendly, historic neighborhood spot with pool, darts, Golden Tee, trivia, a patio, and cold beer.",
+  "url": "https://everettfireplace.com",
+  "telephone": "+1-425-259-9911",
+  "priceRange": "$",
+  "image": "https://everettfireplace.com/assets/storefront-poster.jpg",
+  "slogan": "Everyone's welcome at this fire.",
+  "amenityFeature": [
+    { "@type": "LocationFeatureSpecification", "name": "LGBTQ+ friendly", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Transgender safespace", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Welcomes all genders", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Welcoming to all political views", "value": true }
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "2320 Everett Ave",
+    "addressLocality": "Everett",
+    "addressRegion": "WA",
+    "postalCode": "98201",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 47.9816448,
+    "longitude": -122.1975084
+  },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "11:00", "closes": "01:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "11:00", "closes": "00:00" }
+  ],
+  "sameAs": [
+    "https://www.instagram.com/fireplacebar.everett/",
+    "https://www.facebook.com/profile.php?id=100063573522795"
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Yesteryear&family=Passion+One:wght@700;900&family=Permanent+Marker&family=Barlow+Semi+Condensed:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
@@ -52,20 +109,56 @@ nav{
   position:fixed;top:0;left:0;right:0;z-index:50;
   display:flex;justify-content:space-between;align-items:center;
   padding:1rem 2rem;
-  background:linear-gradient(to bottom, rgba(12,10,14,.93), rgba(12,10,14,0));
+  background:#0c0a0e;
 }
+.brand{display:flex;align-items:center;gap:.55rem;text-decoration:none}
 nav .mark{
   font-family:'Yesteryear',cursive;font-size:1.55rem;color:var(--neon-red);
   text-decoration:none;text-shadow:0 0 12px rgba(255,46,62,.75);
 }
-nav ul{display:flex;gap:1.8rem;list-style:none}
+nav ul{display:flex;gap:1.3rem;list-style:none}
 nav ul a{
   color:var(--chalk-dim);text-decoration:none;font-size:.82rem;
-  letter-spacing:.2em;text-transform:uppercase;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;
   transition:color .25s, text-shadow .25s;
 }
 nav ul a:hover{color:var(--chalk-cyan);text-shadow:0 0 10px rgba(111,227,255,.8)}
-@media(max-width:720px){nav ul{display:none}}
+.nav-toggle{display:none}
+.nav-toggle .menu-icon, .brand-flame{
+  width:27px;height:27px;display:block;transform-origin:50% 80%;color:var(--neon-red);
+  animation:ignite 5s ease-in-out infinite alternate, flameFlicker 1.7s ease-in-out infinite;transition:color .25s;
+  filter:drop-shadow(0 0 4px rgba(255,46,62,.85)) drop-shadow(0 0 9px rgba(255,120,40,.45));
+}
+nav.nav-open .nav-toggle .menu-icon{color:var(--chalk-orange)}
+@keyframes ignite{
+  0%{color:#fff;filter:drop-shadow(0 0 4px rgba(255,255,255,.9)) drop-shadow(0 0 11px rgba(255,240,200,.55))}
+  35%{color:var(--chalk-yellow);filter:drop-shadow(0 0 4px rgba(255,224,102,.9)) drop-shadow(0 0 11px rgba(255,200,80,.5))}
+  65%{color:var(--chalk-orange);filter:drop-shadow(0 0 4px rgba(255,165,61,.9)) drop-shadow(0 0 11px rgba(255,120,40,.5))}
+  100%{color:var(--neon-red);filter:drop-shadow(0 0 4px rgba(255,46,62,.85)) drop-shadow(0 0 9px rgba(255,120,40,.45))}
+}
+@keyframes flameFlicker{
+  0%,100%{opacity:1;transform:scale(1,1)}
+  20%{opacity:.82;transform:scale(1.06,.96)}
+  45%{opacity:1;transform:scale(.96,1.06)}
+  70%{opacity:.9;transform:scale(1.04,.98)}
+}
+@media(max-width:960px){
+  header#top{min-height:auto;padding-bottom:2.5rem}
+  .brand-flame{display:none}
+  .nav-toggle{
+    display:flex;align-items:center;justify-content:center;
+    width:46px;height:46px;padding:8px;background:none;border:0;cursor:pointer;
+  }
+  nav ul{
+    display:none;position:absolute;top:100%;left:0;right:0;
+    flex-direction:column;gap:0;background:#0c0a0e;
+    padding:.4rem 0 .8rem;border-top:1px solid rgba(255,46,62,.25);
+    box-shadow:0 18px 40px rgba(0,0,0,.6);
+  }
+  nav.nav-open ul{display:flex}
+  nav ul li{width:100%}
+  nav ul a{display:block;padding:.95rem 2rem;font-size:1rem}
+}
 
 /* ---------- hero ---------- */
 header{
@@ -134,6 +227,14 @@ h1.sign{animation:fadeUp 1.2s .45s both;line-height:0}
 .btn.ghost:hover{border-color:var(--chalk-cyan);box-shadow:0 0 24px rgba(111,227,255,.3)}
 @keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
 
+/* ---------- today's special ---------- */
+.today-special{
+  text-align:center;margin:1.4rem auto 0;max-width:62ch;padding:0 1rem;
+  font-family:'Permanent Marker',cursive;letter-spacing:.02em;
+  font-size:clamp(1.02rem,2.8vw,1.4rem);color:var(--chalk-yellow);
+  text-shadow:0 0 14px rgba(255,224,102,.45), 0 2px 12px rgba(0,0,0,.95);
+}
+.today-special .ts-label{display:block;color:var(--neon-red);text-shadow:0 0 12px rgba(255,46,62,.6), 0 2px 12px rgba(0,0,0,.95);margin-bottom:.15rem}
 /* ---------- LED ticker ---------- */
 .ticker{
   position:relative;z-index:3;overflow:hidden;white-space:nowrap;
@@ -369,6 +470,12 @@ h2 em{font-style:normal;color:var(--neon-red);text-shadow:0 0 18px rgba(255,46,6
 .map-frame:hover iframe{filter:none}
 
 /* footer */
+.pay-note{
+  max-width:60ch;margin:3rem auto 0;padding-top:2.6rem;
+  border-top:2px dotted var(--led-blue);
+  text-align:center;color:var(--chalk-dim);font-size:1.02rem;line-height:1.6;
+}
+.pay-note strong{color:var(--chalk-yellow);font-weight:600;white-space:nowrap}
 footer{
   text-align:center;padding:3.5rem 1.5rem 5rem;color:var(--chalk-dim);font-size:.9rem;
   border-top:2px dotted var(--led-blue);
@@ -381,15 +488,18 @@ footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
 @media (prefers-reduced-motion: reduce){
   .hero-video{display:none}
   header{background:url('assets/storefront-poster.jpg') center/cover}
-  .ticker .track,.led,.sign-photo{animation:none}
+  .ticker .track,.led,.sign-photo,.nav-toggle .menu-icon,.brand-flame{animation:none}
 }
 </style>
 </head>
 <body>
 
 <nav>
-  <a class="mark" href="#top">The Fireplace</a>
-  <ul>
+  <a class="brand" href="#top">
+    <svg class="brand-flame" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M13.5.67s.74 2.65.74 4.8c0 2.06-1.35 3.73-3.41 3.73-2.07 0-3.63-1.67-3.63-3.73l.03-.36C5.21 7.51 4 10.62 4 14c0 4.42 3.58 8 8 8s8-3.58 8-8C20 8.61 17.41 3.8 13.5.67zM11.71 19c-1.78 0-3.22-1.4-3.22-3.14 0-1.62 1.05-2.76 2.81-3.12 1.77-.36 3.6-1.21 4.62-2.58.39 1.29.59 2.65.59 4.04 0 2.65-2.15 4.8-4.8 4.8z"/></svg>
+    <span class="mark">The Fireplace</span>
+  </a>
+  <ul id="nav-menu">
     <li><a href="#story">The Story</a></li>
     <li><a href="#specials">Specials</a></li>
     <li><a href="#drinks">Drinks</a></li>
@@ -399,6 +509,11 @@ footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
     <li><a href="#reviews">Reviews</a></li>
     <li><a href="#visit">Find Us</a></li>
   </ul>
+  <button class="nav-toggle" type="button" title="Menu" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
+    <svg class="menu-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path fill="currentColor" d="M13.5.67s.74 2.65.74 4.8c0 2.06-1.35 3.73-3.41 3.73-2.07 0-3.63-1.67-3.63-3.73l.03-.36C5.21 7.51 4 10.62 4 14c0 4.42 3.58 8 8 8s8-3.58 8-8C20 8.61 17.41 3.8 13.5.67zM11.71 19c-1.78 0-3.22-1.4-3.22-3.14 0-1.62 1.05-2.76 2.81-3.12 1.77-.36 3.6-1.21 4.62-2.58.39 1.29.59 2.65.59 4.04 0 2.65-2.15 4.8-4.8 4.8z"/>
+    </svg>
+  </button>
 </nav>
 
 <header id="top">
@@ -410,8 +525,9 @@ footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
     <h1 class="sign">
       <img class="sign-photo" src="assets/sign.jpg" alt="The Fireplace — the bar's neon sign: a red awning reading The in white script, above white channel letters spelling FIREPLACE crowned with red neon flames">
     </h1>
-    <p class="est">Everett's oldest running bar · 85+ years strong</p>
+    <p class="est">Everett's oldest running bar<br>85+ years strong</p>
     <p class="sub">Cold beer, good games, and a stool that's been waiting for you since before your grandfather's time.</p>
+    <p class="today-special" id="today-special"><span class="ts-label">Today's Special</span> Cold beer, good games, and good company</p>
     <div class="hero-meta">
       <span><b>2320 Everett Ave</b> · Everett, WA</span>
       <span>Open daily @ <b>11 AM</b></span>
@@ -694,6 +810,7 @@ footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
         width="100%" height="380" style="border:0" allowfullscreen="" loading="lazy"
         referrerpolicy="no-referrer-when-downgrade" title="Map to The Fireplace Bar, 2320 Everett Ave, Everett WA"></iframe>
     </div>
+    <p class="pay-note reveal">No <strong>vertical IDs</strong><br><strong>Cash or Credit Only, No Tap</strong></p>
   </section>
 </main>
 
@@ -745,6 +862,41 @@ if (location.hash) {
   };
   if (!check()) new MutationObserver((_, obs) => { if (check()) obs.disconnect(); })
     .observe(slot, { childList: true, subtree: true });
+})();
+
+// mobile hamburger menu toggle
+(() => {
+  const nav = document.querySelector('nav');
+  const btn = nav && nav.querySelector('.nav-toggle');
+  const menu = document.getElementById('nav-menu');
+  if (!nav || !btn || !menu) return;
+  const setOpen = (open) => {
+    nav.classList.toggle('nav-open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  };
+  btn.addEventListener('click', () => setOpen(!nav.classList.contains('nav-open')));
+  menu.addEventListener('click', (e) => { if (e.target.closest('a')) setOpen(false); });
+})();
+
+// today's special — date-based (uses the visitor's local day)
+(() => {
+  const el = document.getElementById('today-special');
+  if (!el) return;
+  const specials = [
+    "Industry Night — $2 off 6 PM–close with your MAST/food handler card, plus free pool all day", // Sun
+    "All Day Happy Hour",                                  // Mon
+    "Trivia 7–9 PM — $1 off drinks while you play",        // Tue
+    "$1 off whiskey (well excluded — we have standards)",  // Wed
+    "Ladies Night — $1 off drinks after 6 PM",             // Thu
+    "Happy Hour 3–6 PM",                                   // Fri
+    "Cold beer, good games, and good company"              // Sat
+  ];
+  // bar day rolls over at 2 AM — before 2 AM still counts as the previous (bar) day
+  const now = new Date();
+  let day = now.getDay();
+  if (now.getHours() < 2) day = (day + 6) % 7;
+  el.innerHTML = '<span class="ts-label">Today\'s Special</span> ' + specials[day];
 })();
 </script>
 
