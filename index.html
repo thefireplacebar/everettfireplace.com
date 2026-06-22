@@ -312,6 +312,9 @@ h2 em{font-style:normal;color:var(--neon-red);text-shadow:0 0 18px rgba(255,46,6
 .tl-year{font-family:'Passion One',sans-serif;font-weight:700;font-size:1.4rem;color:var(--chalk-orange);letter-spacing:.03em;line-height:1;text-transform:uppercase}
 .tl-name{font-family:'Permanent Marker',cursive;color:#fff;font-size:1.18rem;margin:.2rem 0 .35rem}
 .tl-item p{color:var(--chalk-dim);font-size:1.05rem;max-width:56ch;margin:0}
+.tl-cite{display:inline-block;margin-top:.55rem;font-family:'Barlow Semi Condensed',sans-serif;font-size:.64rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--chalk-dim);text-decoration:none;border:1px solid rgba(242,234,216,.2);border-radius:3px;padding:.2rem .5rem;transition:color .2s,border-color .2s}
+.tl-cite:hover{color:var(--chalk-orange);border-color:var(--chalk-orange)}
+.tl-cite::after{content:" ↗";opacity:.6}
 
 /* specials */
 .spec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem;margin-top:2.4rem}
@@ -495,8 +498,7 @@ footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
     <span class="mark">The Fireplace</span>
   </a>
   <ul id="nav-menu">
-    <li><a href="#story">The Story</a></li>
-    <li><a href="#history">History</a></li>
+    <li><a href="#story">Our Story</a></li>
     <li><a href="#specials">Specials</a></li>
     <li><a href="#drinks">Drinks</a></li>
     <li><a href="#grub">Grub</a></li>
@@ -551,7 +553,7 @@ footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
   <section id="story">
     <div class="story">
       <div class="reveal">
-        <p class="kicker">The Story</p>
+        <p class="kicker">Our Story</p>
         <h2>Everett's <em>oldest</em> running bar</h2>
         <p>Bars come and go. <strong>The Fireplace has stayed lit since 1948</strong> — through booms, busts, and everything Everett has thrown at it. No gimmicks, no rebrand, no craft-cocktail pivot. Just a proper neighborhood dive that knows exactly what it is.</p>
         <p>House rules are simple: <strong>no politics or religion at the bar</strong>, everybody gets a fair pour, and <strong>everyone's welcome</strong> — and we mean everyone.</p>
@@ -562,36 +564,38 @@ footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
         <figcaption>house rules &amp; local love, on the wall</figcaption>
       </figure>
     </div>
-  </section>
 
-  <section id="history">
-    <div class="reveal">
-      <p class="kicker">Before the neon</p>
-      <h2>A little <em>history</em></h2>
-      <p style="color:var(--chalk-dim);font-size:1.1rem;max-width:60ch">Same four walls at 2320 Everett Ave since 1920 — only the name over the door has changed.</p>
+    <div class="reveal" style="margin-top:4rem">
+      <p class="kicker">How we got here</p>
+      <p style="color:var(--chalk-dim);font-size:1.1rem;max-width:60ch">Same four walls on Everett Ave — only the name over the door has changed.</p>
     </div>
     <div class="timeline">
       <div class="tl-item reveal">
-        <div class="tl-year">1920</div>
-        <div class="tl-name">The building goes up</div>
-        <p>The bones of 2320 Everett Ave are laid — same address, same walls, ever since.</p>
-      </div>
-      <div class="tl-item reveal">
-        <div class="tl-year">1929 – 1940s</div>
-        <div class="tl-name">Brown's Mug</div>
-        <p>The corner's watering hole pours under the name Brown's Mug.</p>
-      </div>
-      <div class="tl-item reveal">
-        <div class="tl-year">Mid-1940s – 1947</div>
-        <div class="tl-name">Morrow's Tavern</div>
-        <p>Cliff &amp; Esther Morrow, Everett locals, keep the lights on through the war years.</p>
+        <div class="tl-year">1985</div>
+        <div class="tl-name">Still in the family</div>
+        <p>The family behind the bar today takes over — and keeps the neon lit.</p>
+        <a class="tl-cite" href="https://www.liveineverett.com/blog//live-in-everett-member-fireplace-bar" target="_blank" rel="noopener">Live in Everett</a>
       </div>
       <div class="tl-item reveal">
         <div class="tl-year">1948</div>
-        <div class="tl-name">The Fireplace Tavern</div>
-        <p>The Morrows hand it on, the neon goes up, and The Fireplace is born — still lit today.</p>
+        <div class="tl-name">The Fireplace</div>
+        <p>It first shows up as the Fireplace Tavern in the 1948 city directory — and the name's been over the door ever since.</p>
+        <a class="tl-cite" href="http://www.seattlebars.org/2021/05/4207-fireplace-bar-everett-wa-552021.html" target="_blank" rel="noopener">1948 Polk directory</a>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-year">Early 1940s – 1947</div>
+        <div class="tl-name">Morrow's Tavern</div>
+        <p>Cliff &amp; Esther Morrow run the place through the war years.</p>
+        <a class="tl-cite" href="http://www.seattlebars.org/2021/05/4207-fireplace-bar-everett-wa-552021.html" target="_blank" rel="noopener">Polk directory</a>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-year">Mid-1930s</div>
+        <div class="tl-name">Brown's Tavern</div>
+        <p>City directories put a tavern on this corner — Brown's — back in the mid-1930s.</p>
+        <a class="tl-cite" href="http://www.seattlebars.org/2021/05/4207-fireplace-bar-everett-wa-552021.html" target="_blank" rel="noopener">Polk directory</a>
       </div>
     </div>
+    <p class="hof-note">The building's older still — the exact year's lost to the records.</p>
   </section>
 
   <section id="specials">
