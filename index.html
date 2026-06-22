@@ -264,6 +264,18 @@ section{padding:6rem 1.5rem;max-width:1120px;margin:0 auto}
   font-family:'Permanent Marker',cursive;font-size:1rem;letter-spacing:.12em;
   color:var(--chalk-orange);margin-bottom:.8rem;
 }
+.story-summary{
+  list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:.6rem;
+}
+.story-summary::-webkit-details-marker{display:none}
+.story-summary .kicker{margin-bottom:0}
+.story-summary:hover{opacity:.82}
+.story-caret{
+  width:0;height:0;border-top:5px solid transparent;border-bottom:5px solid transparent;
+  border-left:7px solid var(--chalk-orange);transition:transform .25s;
+}
+.story-collapse[open] .story-caret{transform:rotate(90deg)}
+.story-collapse[open] .reveal{opacity:1;transform:none}
 h2{
   font-family:'Passion One',sans-serif;font-weight:700;
   font-size:clamp(2.2rem,5.5vw,3.6rem);line-height:1.04;color:#fff;
@@ -565,10 +577,9 @@ footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
       </figure>
     </div>
 
-    <div class="reveal" style="margin-top:4rem">
-      <p class="kicker">How we got here</p>
-      <p style="color:var(--chalk-dim);font-size:1.1rem;max-width:60ch">Same four walls on Everett Ave — only the name over the door has changed.</p>
-    </div>
+    <details class="story-collapse reveal" style="margin-top:4rem">
+      <summary class="story-summary"><span class="kicker">How we got here</span><span class="story-caret" aria-hidden="true"></span></summary>
+      <p style="color:var(--chalk-dim);font-size:1.1rem;max-width:60ch;margin-top:1rem">Same four walls on Everett Ave — only the name over the door has changed.</p>
     <div class="timeline">
       <div class="tl-item reveal">
         <div class="tl-year">1985</div>
@@ -596,6 +607,7 @@ footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
       </div>
     </div>
     <p class="hof-note">The building's older still — the exact year's lost to the records.</p>
+    </details>
   </section>
 
   <section id="specials">
@@ -611,6 +623,15 @@ footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
       <div class="led pink reveal"><div class="board spec"><h3>Sunday</h3><p><b>Industry Night.</b> $2 off 6 PM–close with MAST/food handler card. Plus <b>free pool all day</b>.</p></div></div>
       <div class="led reveal"><div class="board spec"><h3>Every Week</h3><p><b>Happy Hour Tue–Fri, 3–6 PM.</b> Arena event? $1 off before shows with your ticket.</p></div></div>
     </div>
+  </section>
+
+  <section id="social">
+    <div class="reveal">
+      <p class="kicker">Follow along</p>
+      <h2>Latest <em>posts</em></h2>
+    </div>
+    <!-- Elfsight Social Feed widget (Instagram + Facebook) — platform.js loader is already on the page -->
+    <div class="elfsight-app-c603aab2-a1a5-40e8-ba10-3addadb8fc49" data-elfsight-app-lazy></div>
   </section>
 
   <section id="drinks">
@@ -879,7 +900,7 @@ if (location.hash) {
 // Once the Elfsight Google-reviews widget actually mounts, hide the fallback card.
 (function () {
   const fallback = document.querySelector('.rev-fallback');
-  const slot = document.querySelector('[class^="elfsight-app-"], [class*=" elfsight-app-"]');
+  const slot = document.querySelector('.elfsight-app-c861b7f2-ca39-4135-8d4c-fd768c45ec10');
   if (!fallback || !slot) return;
   // If the placeholder ID was never replaced, leave the fallback visible.
   if (slot.className.includes('PASTE-YOUR-ID-HERE')) return;
