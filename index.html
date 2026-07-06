@@ -240,14 +240,16 @@ h1.sign{animation:fadeUp 1.2s .45s both}
 .btn.ghost:hover{border-color:var(--chalk-cyan);box-shadow:0 0 24px rgba(111,227,255,.3)}
 /* LED-marquee buttons — dotted frame around a dark board, like the specials cards */
 .btn-led{
-  display:inline-block;padding:11px;border-radius:11px;text-decoration:none;
+  display:flex;align-items:stretch;
+  padding:11px;border-radius:11px;text-decoration:none;
   background-image:radial-gradient(circle, var(--led-purple) 2.1px, transparent 3.1px);
   background-size:17px 17px;background-position:center;
   animation:ledpulse 2.6s ease-in-out infinite;
   transition:transform .2s;
 }
 .btn-led span{
-  display:block;border-radius:6px;padding:.85rem 1.9rem;
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  flex:1;border-radius:6px;padding:.85rem 1.9rem;
   background:linear-gradient(170deg,#141019,#0e0b12);
   color:var(--chalk);font-size:.85rem;font-weight:600;
   letter-spacing:.2em;text-transform:uppercase;white-space:nowrap;
@@ -256,6 +258,12 @@ h1.sign{animation:fadeUp 1.2s .45s both}
 }
 .btn-led:hover{transform:translateY(-2px)}
 .btn-led:hover span{color:var(--chalk-orange)}
+/* mobile: keep all three on one row (labels wrap inside, boards stay even height) */
+@media(max-width:560px){
+  .hero-cta{flex-wrap:nowrap;gap:.45rem}
+  .btn-led{flex:1 1 0;min-width:0;padding:6px;border-radius:9px}
+  .btn-led span{padding:.65rem .3rem;font-size:.6rem;letter-spacing:.05em;white-space:normal;line-height:1.2}
+}
 @keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
 
 /* ---------- today's special ---------- */
@@ -302,6 +310,9 @@ section{padding:6rem 1.5rem;max-width:1120px;margin:0 auto}
 }
 .story-collapse[open] .story-caret{transform:rotate(90deg)}
 .story-collapse[open] .reveal{opacity:1;transform:none}
+/* actually hide the contents when closed — otherwise author display:grid/block on
+   .hof-grid/.timeline overrides the UA rule and invisible .reveal items reserve space */
+.story-collapse:not([open]) > :not(summary){display:none}
 h2{
   font-family:'Passion One',sans-serif;font-weight:700;
   font-size:clamp(2.2rem,5.5vw,3.6rem);line-height:1.04;color:#fff;
