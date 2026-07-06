@@ -171,13 +171,15 @@ header{
   position:relative;min-height:100svh;
   display:flex;flex-direction:column;justify-content:center;align-items:center;
   text-align:center;padding:6rem 1.5rem 5rem;overflow:hidden;
-  background:var(--ink) url('assets/storefront-poster.jpg') center/cover no-repeat;
+  background:
+    radial-gradient(58% 46% at 50% 33%, rgba(255,46,62,.16) 0%, rgba(255,120,40,.05) 42%, transparent 66%),
+    var(--ink);
 }
 .hero-shade{
   position:absolute;inset:0;
   background:
-    radial-gradient(95% 80% at 50% 45%, rgba(12,10,14,.32) 0%, rgba(12,10,14,.78) 75%, rgba(12,10,14,.96) 100%),
-    linear-gradient(to top, var(--ink) 0%, transparent 28%);
+    radial-gradient(100% 92% at 50% 44%, transparent 54%, rgba(12,10,14,.6) 100%),
+    linear-gradient(to top, var(--ink) 0%, transparent 24%);
 }
 .hero-inner{position:relative;z-index:2}
 .est{
@@ -187,18 +189,29 @@ header{
   text-shadow:0 0 16px rgba(255,224,102,.65), 0 0 40px rgba(255,165,61,.4), 0 2px 12px rgba(0,0,0,.95);
   margin-top:1.4rem;animation:fadeUp 1s .6s both;
 }
-h1.sign{animation:fadeUp 1.2s .45s both;line-height:0}
-/* the actual sign, cropped from the drone footage, feathered into the hero */
-.sign-photo{
+h1.sign{animation:fadeUp 1.2s .45s both}
+/* neon-script wordmark — the hero centerpiece */
+.sign-neon{
   display:block;margin:0 auto;
-  width:clamp(320px,76vw,880px);height:auto;
-  -webkit-mask-image:radial-gradient(ellipse 62% 58% at 50% 50%, #000 48%, transparent 74%);
-  mask-image:radial-gradient(ellipse 62% 58% at 50% 50%, #000 48%, transparent 74%);
-  animation:signbreathe 5.5s ease-in-out infinite;
+  font-family:'Yesteryear',cursive;font-weight:400;
+  font-size:clamp(3.2rem,12.5vw,8.5rem);line-height:1.05;
+  color:var(--neon-red);
+  text-shadow:
+    0 0 1px rgba(255,120,130,.9),
+    0 0 4px rgba(255,46,62,.85),
+    0 0 10px rgba(255,46,62,.55),
+    0 0 22px rgba(196,16,30,.4);
+  animation:neonbreathe 5s ease-in-out infinite alternate, neonflicker 1.7s ease-in-out infinite;
 }
-@keyframes signbreathe{
-  0%,100%{filter:brightness(1) saturate(1)}
-  50%{filter:brightness(1.09) saturate(1.14)}
+@keyframes neonbreathe{
+  0%{filter:brightness(.92)}
+  100%{filter:brightness(1.12)}
+}
+@keyframes neonflicker{
+  0%,100%{opacity:1}
+  20%{opacity:.86}
+  45%{opacity:1}
+  70%{opacity:.9}
 }
 .sub{
   margin-top:1.4rem;max-width:40ch;margin-inline:auto;
@@ -234,7 +247,7 @@ h1.sign{animation:fadeUp 1.2s .45s both;line-height:0}
 
 /* ---------- today's special ---------- */
 .today-special{
-  text-align:center;margin:1.4rem auto 0;max-width:62ch;padding:0 1rem;
+  text-align:center;margin:1.4rem auto 0;max-width:40ch;padding:0 1rem;
   font-family:'Permanent Marker',cursive;letter-spacing:.02em;
   font-size:clamp(1.02rem,2.8vw,1.4rem);color:var(--chalk-yellow);
   text-shadow:0 0 14px rgba(255,224,102,.45), 0 2px 12px rgba(0,0,0,.95);
@@ -497,7 +510,7 @@ footer .mark{
 }
 footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
 @media (prefers-reduced-motion: reduce){
-  .ticker .track,.led,.sign-photo,.nav-toggle .menu-icon,.brand-flame{animation:none}
+  .ticker .track,.led,.sign-neon,.nav-toggle .menu-icon,.brand-flame{animation:none}
   .js .reveal{opacity:1;transform:none;transition:none}
 }
 </style>
@@ -529,9 +542,7 @@ footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
 <header id="top">
   <div class="hero-shade"></div>
   <div class="hero-inner">
-    <h1 class="sign">
-      <img class="sign-photo" src="assets/sign.jpg" alt="The Fireplace — the bar's neon sign: a red awning reading The in white script, above white channel letters spelling FIREPLACE crowned with red neon flames">
-    </h1>
+    <h1 class="sign"><span class="sign-neon">The Fireplace</span></h1>
     <p class="est">Everett's oldest running bar<br>Est. 1948</p>
     <p class="sub">Cold beer, good games, and a stool that's been waiting for you since before your grandfather's time.</p>
     <p class="today-special" id="today-special"><span class="ts-label">Today's Special</span> Cold beer, good games, and good company</p>
@@ -697,7 +708,7 @@ footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
       <div class="reveal">
         <p class="kicker">Grub</p>
         <h2>Bar food</h2>
-        <p style="color:var(--chalk-dim);font-size:1.1rem;margin-bottom:1.6rem">No foam, no tasting menu. Just the stuff that tastes best on a barstool, served until late.</p>
+        <p style="color:var(--chalk-dim);font-size:1.1rem;margin-bottom:1.6rem">Outside food welcome — bring it or DoorDash it.</p>
         <ul class="menu-list">
           <li>Fried Pickles <span class="dots"></span> <span class="price">$7</span></li>
           <li>Chicken Strips <span class="dots"></span> <span class="price">$8</span></li>
