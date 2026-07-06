@@ -223,7 +223,7 @@ h1.sign{animation:fadeUp 1.2s .45s both}
 .hero-meta span b{color:#fff;font-weight:600}
 .hero-meta a{color:inherit;text-decoration:none;transition:color .25s}
 .hero-meta a:hover b{color:var(--chalk-orange)}
-.hero-cta{margin-top:2.5rem;animation:fadeUp 1.2s 1.15s both;display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center}
+.hero-cta{margin-top:2.5rem;animation:fadeUp 1.2s 1.15s both;display:flex;flex-wrap:wrap;gap:1rem;justify-content:center}
 .btn{
   display:inline-block;padding:.9rem 2.3rem;
   font-size:.85rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
@@ -238,6 +238,24 @@ h1.sign{animation:fadeUp 1.2s .45s both}
   border:1px solid rgba(111,227,255,.5);box-shadow:none;margin-left:.8rem;
 }
 .btn.ghost:hover{border-color:var(--chalk-cyan);box-shadow:0 0 24px rgba(111,227,255,.3)}
+/* LED-marquee buttons — dotted frame around a dark board, like the specials cards */
+.btn-led{
+  display:inline-block;padding:11px;border-radius:11px;text-decoration:none;
+  background-image:radial-gradient(circle, var(--led-purple) 2.1px, transparent 3.1px);
+  background-size:17px 17px;background-position:center;
+  animation:ledpulse 2.6s ease-in-out infinite;
+  transition:transform .2s;
+}
+.btn-led span{
+  display:block;border-radius:6px;padding:.85rem 1.9rem;
+  background:linear-gradient(170deg,#141019,#0e0b12);
+  color:var(--chalk);font-size:.85rem;font-weight:600;
+  letter-spacing:.2em;text-transform:uppercase;white-space:nowrap;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
+  transition:color .25s;
+}
+.btn-led:hover{transform:translateY(-2px)}
+.btn-led:hover span{color:var(--chalk-orange)}
 @keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
 
 /* ---------- today's special ---------- */
@@ -505,7 +523,7 @@ footer .mark{
 }
 footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
 @media (prefers-reduced-motion: reduce){
-  .ticker .track,.led,.sign-neon,.nav-toggle .menu-icon,.brand-flame{animation:none}
+  .ticker .track,.led,.btn-led,.sign-neon,.nav-toggle .menu-icon,.brand-flame{animation:none}
   .js .reveal{opacity:1;transform:none;transition:none}
 }
 </style>
@@ -547,9 +565,9 @@ footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
       <span><a href="tel:+14252599911"><b>(425) 259-9911</b></a></span>
     </div>
     <div class="hero-cta">
-      <a class="btn" href="#specials">Daily Specials</a>
-      <a class="btn" href="https://www.instagram.com/fireplacebar.everett/" target="_blank" rel="noopener">Instagram</a>
-      <a class="btn" href="https://www.facebook.com/profile.php?id=100063573522795" target="_blank" rel="noopener">Facebook</a>
+      <a class="btn-led" href="#specials"><span>Daily Specials</span></a>
+      <a class="btn-led" href="https://www.instagram.com/fireplacebar.everett/" target="_blank" rel="noopener"><span>Instagram</span></a>
+      <a class="btn-led" href="https://www.facebook.com/profile.php?id=100063573522795" target="_blank" rel="noopener"><span>Facebook</span></a>
     </div>
   </div>
 </header>
@@ -571,7 +589,6 @@ footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
   <section id="story">
     <div class="story">
       <div class="reveal">
-        <p class="kicker">Our Story</p>
         <h2>Everett's <em>oldest</em> running bar</h2>
         <p>Bars come and go. <strong>The Fireplace has stayed lit since 1948</strong> — through booms, busts, and everything Everett has thrown at it. No gimmicks, no rebrand, no craft-cocktail pivot. Just a proper neighborhood dive that knows exactly what it is.</p>
         <p>House rules are simple: <strong>no politics or religion at the bar</strong>, everybody gets a fair pour, and <strong>everyone's welcome</strong> — and we mean everyone.</p>
@@ -618,7 +635,6 @@ footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
 
   <section id="specials">
     <div class="reveal">
-      <p class="kicker">Straight off the chalkboard</p>
       <h2>Daily <em>specials</em></h2>
     </div>
     <div class="spec-grid">
@@ -633,8 +649,7 @@ footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
 
   <section id="social">
     <div class="reveal">
-      <p class="kicker">Follow along</p>
-      <h2>Latest <em>posts</em></h2>
+      <h2>Follow <em>along</em></h2>
     </div>
     <!-- Elfsight Social Feed widget (Instagram + Facebook) — platform.js loader is already on the page -->
     <div class="elfsight-app-c603aab2-a1a5-40e8-ba10-3addadb8fc49" data-elfsight-app-lazy></div>
@@ -642,7 +657,6 @@ footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
 
   <section id="drinks">
     <div class="reveal">
-      <p class="kicker">Drink it your way</p>
       <h2>The <em>board</em></h2>
     </div>
     <div class="led blue drink-wrap reveal">
@@ -701,7 +715,6 @@ footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
   <section id="grub">
     <div class="grub-grid">
       <div class="reveal">
-        <p class="kicker">Grub</p>
         <h2>Bar food</h2>
         <p style="color:var(--chalk-dim);font-size:1.1rem;margin-bottom:1.6rem">Outside food welcome — bring it or DoorDash it.</p>
         <ul class="menu-list">
@@ -726,7 +739,6 @@ footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
 
   <section id="around">
     <div class="reveal">
-      <p class="kicker">Around the bar</p>
       <h2>Plenty of ways to <em>lose</em> a friendly bet</h2>
     </div>
     <div class="gallery">
@@ -739,10 +751,12 @@ footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
 
   <section id="champions">
     <div class="reveal">
-      <p class="kicker">The Wall of Flame</p>
       <h2>House <em>champions</em></h2>
       <p style="color:var(--chalk-dim);font-size:1.1rem;max-width:62ch">Bragging rights at The Fireplace are earned the hard way — over a pot of chili or a round of golf. These names are screwed into the wall in brass. Immortalized. Insufferable about it.</p>
     </div>
+
+    <details class="story-collapse reveal" style="margin-top:2rem">
+      <summary class="story-summary"><span class="kicker">See the wall</span><span class="story-caret" aria-hidden="true"></span></summary>
     <div class="hof-grid">
 
       <div class="plaque reveal">
@@ -800,11 +814,11 @@ footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
 
     </div>
     <p class="hof-note">Think you can be a winner? The cook-off and the tournaments come around every year — grab a bartender, throw your name in, and you could be the next one up on the wall.</p>
+    </details>
   </section>
 
   <section id="reviews">
     <div class="reveal">
-      <p class="kicker">Word on the Ave</p>
       <h2>Don't take <em>our</em> word for it</h2>
       <p style="color:var(--chalk-dim);font-size:1.1rem;max-width:60ch">Regulars, first-timers, dart leagues and drag brunch crowds — they've all left their two cents on Google. Read the real, unfiltered reviews and see why folks keep pulling up a stool.</p>
     </div>
@@ -839,7 +853,6 @@ footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
 
   <section id="visit">
     <div class="reveal">
-      <p class="kicker">Find us</p>
       <h2>The neon's <em>on</em></h2>
     </div>
     <div class="visit-grid">
