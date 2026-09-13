@@ -34,7 +34,7 @@
   "telephone": "+1-425-259-9911",
   "priceRange": "$",
   "paymentAccepted": "Cash, Credit Card",
-  "foundingDate": "1948",
+  "foundingDate": "1940",
   "image": "https://everettfireplace.com/assets/storefront-poster.jpg",
   "slogan": "Everyone's welcome at this fire.",
   "amenityFeature": [
@@ -386,6 +386,22 @@ h2 em{font-style:normal;color:var(--neon-red);text-shadow:0 0 18px rgba(255,46,6
 @media(max-width:840px){.spec-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:540px){.spec-grid{grid-template-columns:1fr}}
 
+/* events */
+.event-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.3rem;margin-top:2.4rem}
+.event .when{display:block;font-family:'Barlow Semi Condensed',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--chalk-yellow);margin-bottom:.5rem}
+.event p+p{margin-top:.6rem}
+/* each card carries the colors of its poster: --ev = bulbs + title, --ev2 = date kicker, --ev-bg = tint */
+.event-grid .led{background-image:radial-gradient(circle, var(--ev) 2.1px, transparent 3.1px)}
+.event-grid .board{background:linear-gradient(170deg, var(--ev-bg), #0e0b12)}
+.event h3{color:var(--ev)}
+.event .when{color:var(--ev2)}
+.event p b{color:#fff}
+.ev-dolly{--ev:#ff4fa3;--ev2:#ffd1e8;--ev-bg:#2a1020}   /* marquee pink + rhinestone highlight over denim */
+.ev-hawks{--ev:#69be28;--ev2:#a5acaf;--ev-bg:#0b1f38}  /* action green + wolf grey over college navy */
+.ev-drive{--ev:#ffc82e;--ev2:#7fd3f2;--ev-bg:#122a3a}  /* flyer yellow + snow-sky blue */
+.ev-dumper{--ev:#5fc7c4;--ev2:#c4ced4;--ev-bg:#0c2c56} /* Big Dumper can teal + silver over Mariners navy */
+@media(max-width:640px){.event-grid{grid-template-columns:1fr}}
+
 /* drink board */
 .drink-wrap{margin-top:2.4rem}
 .drink-board{
@@ -399,6 +415,7 @@ h2 em{font-style:normal;color:var(--neon-red);text-shadow:0 0 18px rgba(255,46,6
 .drink-col ul{list-style:none}
 .drink-col li{padding:.3rem 0;font-size:1.02rem;color:var(--chalk)}
 .drink-col li small{color:var(--chalk-dim);font-style:italic}
+.drink-col h3.sub{margin-top:1.2rem}
 .fineprint{margin-top:1.6rem;font-size:.85rem;color:var(--chalk-dim);font-style:italic}
 @media(max-width:920px){.drink-board{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:520px){.drink-board{grid-template-columns:1fr}}
@@ -411,7 +428,7 @@ h2 em{font-style:normal;color:var(--neon-red);text-shadow:0 0 18px rgba(255,46,6
   padding:.62rem 0;font-size:1.12rem;
 }
 .menu-list li .dots{flex:1;border-bottom:2px dotted rgba(242,234,216,.25);transform:translateY(-4px)}
-.menu-list li .price{font-family:'Permanent Marker',cursive;color:var(--chalk-yellow);font-size:1.05rem}
+.menu-list li .price{font-family:'Passion One',sans-serif;font-weight:700;color:var(--chalk-yellow);font-size:1.45rem;line-height:1;letter-spacing:.02em}
 @media(max-width:840px){.grub-grid{grid-template-columns:1fr}}
 
 /* gallery */
@@ -557,8 +574,9 @@ footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
     <span class="mark">The Fireplace</span>
   </a>
   <ul id="nav-menu">
-    <li><a href="#story">Our Story</a></li>
     <li><a href="#specials">Specials</a></li>
+    <li><a href="#events">Events</a></li>
+    <li><a href="#story">Our Story</a></li>
     <li><a href="#drinks">Drinks</a></li>
     <li><a href="#grub">Grub</a></li>
     <li><a href="#around">Around the Bar</a></li>
@@ -577,7 +595,7 @@ footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
   <div class="hero-shade"></div>
   <div class="hero-inner">
     <h1 class="sign"><span class="sign-neon">The Fireplace</span></h1>
-    <p class="est">Everett's oldest running bar<br>Est. 1948</p>
+    <p class="est">Everett's oldest running bar<br>Est. 1940</p>
     <p class="sub">Cold beer, good games, and a stool that's been waiting for you since before your grandfather's time.</p>
     <p class="today-special" id="today-special"><span class="ts-label">Today's Special</span> Cold beer, good games, and good company</p>
     <div class="hero-meta">
@@ -596,7 +614,6 @@ footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
 <div class="ticker" aria-hidden="true">
   <div class="track" id="ticker-track">
     <span>★ $1 JELLO SHOTS ★</span>
-    <span>WATCH FIFA WORLD CUP 26 MATCHES HERE</span>
     <span>FREE POOL ALL DAY SUNDAY</span>
     <span>TRIVIA TUESDAYS 7–9 PM</span>
     <span>ALL DAY HAPPY HOUR MONDAYS</span>
@@ -607,11 +624,56 @@ footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
 </div>
 
 <main>
+  <section id="specials">
+    <div class="reveal">
+      <h2>Daily <em>specials</em></h2>
+    </div>
+    <div class="spec-grid">
+      <div class="led reveal"><div class="board spec"><h3>Monday</h3><p><b>All Day Happy Hour.</b> The only good thing about Mondays.</p></div></div>
+      <div class="led blue reveal"><div class="board spec"><h3>Tuesday</h3><p><b>Trivia 7–9 PM.</b> $1 off drinks when you're playing.</p></div></div>
+      <div class="led pink reveal"><div class="board spec"><h3>Wednesday</h3><p><b>$1 off whiskey.</b> Excluding well — we have standards.</p></div></div>
+      <div class="led blue reveal"><div class="board spec"><h3>Thursday</h3><p><b>Ladies Night.</b> $1 off drinks after 6 PM.</p></div></div>
+      <div class="led pink reveal"><div class="board spec"><h3>Sunday</h3><p><b>Industry Night.</b> $2 off 6 PM–close with MAST/food handler card. Plus <b>free pool all day</b>.</p></div></div>
+      <div class="led reveal"><div class="board spec"><h3>Every Week</h3><p><b>Happy Hour Tue–Fri, 3–6 PM.</b> Arena event? $1 off before shows with your ticket.</p></div></div>
+    </div>
+  </section>
+
+  <section id="events">
+    <div class="reveal">
+      <h2>What's <em>on</em></h2>
+    </div>
+    <div class="event-grid">
+      <div class="led reveal ev-dolly" data-until="2026-09-25"><div class="board spec event">
+        <span class="when">September 25 · 7 PM–close</span>
+        <h3>Dolly Day</h3>
+        <p><b>Diamonds, denim &amp; Dolly.</b> Karaoke and sing-alongs all night. Dress code: denim, diamonds, fringe, boots and big hair — best Dolly-inspired outfit wins.</p>
+        <p>Featured drinks: <b>The Jolene</b> (a dirty Shirley), the <b>Dirt Road Martini</b>, and the <b>9 to 5</b> (a paloma). Come party like a backwoods Barbie.</p>
+      </div></div>
+      <div class="led reveal ev-hawks"><div class="board spec event">
+        <span class="when">Every Seahawks game</span>
+        <h3>Hawks at the Fireplace</h3>
+        <p><b>$1 off drafts, wells &amp; wine during the game.</b> Raffle and a potluck every game.</p>
+        <p>10 AM kickoff? We'll open at <b>9:45 AM</b>. Go Hawks.</p>
+      </div></div>
+      <div class="led reveal ev-drive" data-until="2026-09-30"><div class="board spec event">
+        <span class="when">All September</span>
+        <h3>Coat, Hat, Gloves &amp; Sock Drive</h3>
+        <p><b>$2 off drinks</b> when you bring in new or slightly used coats, hats or gloves for kids in need. Socks need to be new.</p>
+        <p>Let's keep kids warm this winter.</p>
+      </div></div>
+      <div class="led reveal ev-dumper"><div class="board spec event">
+        <span class="when">Whenever the Mariners play</span>
+        <h3>$1 off Big Dumper</h3>
+        <p>Cal Raleigh's <b>Big Dumper</b> is on tap now — and it's a buck off any time the Mariners are playing.</p>
+      </div></div>
+    </div>
+  </section>
+
   <section id="story">
     <div class="story">
       <div class="reveal">
         <h2>Everett's <em>oldest</em> running bar</h2>
-        <p>Bars come and go. <strong>The Fireplace has stayed lit since 1948</strong> — through booms, busts, and everything Everett has thrown at it. No gimmicks, no rebrand, no craft-cocktail pivot. Just a proper neighborhood dive that knows exactly what it is.</p>
+        <p>Bars come and go. <strong>The Fireplace has stayed lit since 1940</strong> — through booms, busts, and everything Everett has thrown at it. No gimmicks, no rebrand, no craft-cocktail pivot. Just a proper neighborhood dive that knows exactly what it is.</p>
         <p>House rules are simple: <strong>no politics or religion at the bar</strong>, everybody gets a fair pour, and <strong>everyone's welcome</strong> — and we mean everyone.</p>
         <p>Come for a beer. Stay for the next 85 years.</p>
       </div>
@@ -654,20 +716,6 @@ footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
     </details>
   </section>
 
-  <section id="specials">
-    <div class="reveal">
-      <h2>Daily <em>specials</em></h2>
-    </div>
-    <div class="spec-grid">
-      <div class="led reveal"><div class="board spec"><h3>Monday</h3><p><b>All Day Happy Hour.</b> The only good thing about Mondays.</p></div></div>
-      <div class="led blue reveal"><div class="board spec"><h3>Tuesday</h3><p><b>Trivia 7–9 PM.</b> $1 off drinks when you're playing.</p></div></div>
-      <div class="led pink reveal"><div class="board spec"><h3>Wednesday</h3><p><b>$1 off whiskey.</b> Excluding well — we have standards.</p></div></div>
-      <div class="led blue reveal"><div class="board spec"><h3>Thursday</h3><p><b>Ladies Night.</b> $1 off drinks after 6 PM.</p></div></div>
-      <div class="led pink reveal"><div class="board spec"><h3>Sunday</h3><p><b>Industry Night.</b> $2 off 6 PM–close with MAST/food handler card. Plus <b>free pool all day</b>.</p></div></div>
-      <div class="led reveal"><div class="board spec"><h3>Every Week</h3><p><b>Happy Hour Tue–Fri, 3–6 PM.</b> Arena event? $1 off before shows with your ticket.</p></div></div>
-    </div>
-  </section>
-
   <section id="social">
     <div class="reveal">
       <h2>Follow <em>along</em></h2>
@@ -686,46 +734,61 @@ footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
           <h3>Draft</h3>
           <ul>
             <li>Coors Light</li>
+            <li>Bodhizafa</li>
+            <li>One Tree <small>— passion guava</small></li>
             <li>Manny's</li>
             <li>Big Dumper</li>
             <li>Modelo</li>
-            <li>District Amber</li>
+            <li>Narrows Oktoberfest</li>
             <li>Elysian Hazy Ale</li>
-            <li>Rotating tap <small>— Kona Big Wave / Mango Cart</small></li>
+          </ul>
+          <h3 class="sub">Rotating</h3>
+          <ul>
+            <li>Kona Big Wave</li>
+            <li>Golden Road Mango Cart</li>
           </ul>
         </div>
         <div class="drink-col">
           <h3>Bottles</h3>
           <ul>
+            <li>Coors Light</li>
             <li>Rainier</li>
             <li>Coors Banquet</li>
             <li>Corona</li>
             <li>Blue Moon</li>
             <li>Michelob Ultra</li>
             <li>Widmer Hefe</li>
-            <li>Bud Light · Budweiser</li>
+            <li>Bud Light</li>
+            <li>Budweiser</li>
           </ul>
         </div>
         <div class="drink-col">
           <h3>Cans</h3>
           <ul>
-            <li>Rainier Tall Boy · PBR</li>
+            <li>Rainier Tall Boy</li>
+            <li>PBR</li>
+            <li>Miller Lite</li>
+            <li>Natural Light</li>
             <li>Guinness</li>
             <li>Twisted Tea · Sun Cruiser</li>
+            <li>Schilling <small>— Local Legend</small></li>
             <li>Two Towns Pineapple</li>
-            <li>White Claw <small>— 4 flavors</small></li>
+            <li>White Claw <small>— mango, blackberry, green apple, black cherry</small></li>
             <li>NÜTRL <small>— pineapple, strawberry</small></li>
-            <li>Athletic &amp; Mich Ultra N/A</li>
+            <li>Athletic <small>— Run Wild IPA, N/A</small></li>
+            <li>Michelob Ultra N/A</li>
           </ul>
         </div>
         <div class="drink-col">
           <h3>&amp; More</h3>
           <ul>
-            <li>Full liquor shelf</li>
-            <li>Chardonnay · Pinot Grigio</li>
-            <li>Cabernet · Champagne</li>
+            <li>Chardonnay</li>
+            <li>Pinot Grigio</li>
+            <li>Cabernet</li>
+            <li>Champagne</li>
             <li>$1 Jello Shots</li>
             <li>Pull tabs at the bar</li>
+            <li>Full liquor shelf</li>
           </ul>
         </div>
       </div>
@@ -904,11 +967,28 @@ footer .tag{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem}
 
 <footer>
   <span class="mark">The Fireplace</span>
-  <p class="tag">2320 Everett Ave · Everett, WA · Est. 1948</p>
+  <p class="tag">2320 Everett Ave · Everett, WA · Est. 1940</p>
   <p style="margin-top:1rem;opacity:.65">Everyone's welcome at this fire. 🔥</p>
 </footer>
 
 <script>
+// Expire dated events. A card with data-until="YYYY-MM-DD" stays up through
+// the END of that day (local time), then is removed; the nav link and section
+// go too if nothing is left. Undated cards are ongoing and never expire.
+(function () {
+  const today = new Date(); today.setHours(0, 0, 0, 0);
+  document.querySelectorAll('#events [data-until]').forEach((card) => {
+    const [y, m, d] = card.dataset.until.split('-').map(Number);
+    if (new Date(y, m - 1, d) < today) card.remove();
+  });
+  const grid = document.querySelector('#events .event-grid');
+  if (grid && !grid.children.length) {
+    document.getElementById('events').remove();
+    const link = document.querySelector('#nav-menu a[href="#events"]');
+    if (link) link.parentElement.remove();
+  }
+})();
+
 // duplicate ticker content for a seamless loop
 const track = document.getElementById('ticker-track');
 track.innerHTML += track.innerHTML;
