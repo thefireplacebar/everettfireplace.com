@@ -331,7 +331,7 @@ section{padding:6rem 1.5rem;max-width:1120px;margin:0 auto}
 .story-collapse[open] .story-caret{transform:rotate(90deg)}
 .story-collapse[open] .reveal{opacity:1;transform:none}
 /* actually hide the contents when closed — otherwise author display:grid/block on
-   .hof-grid/.timeline overrides the UA rule and invisible .reveal items reserve space */
+   .timeline overrides the UA rule and invisible .reveal items reserve space */
 .story-collapse:not([open]) > :not(summary){display:none}
 h2{
   font-family:'Passion One',sans-serif;font-weight:700;
@@ -408,6 +408,7 @@ h2 em{font-style:normal;color:var(--neon-red);text-shadow:0 0 18px rgba(255,46,6
 .ev-hawks{--ev:#69be28;--ev2:#a5acaf;--ev-bg:#0b1f38}  /* action green + wolf grey over college navy */
 .ev-drive{--ev:#ffc82e;--ev2:#7fd3f2;--ev-bg:#122a3a}  /* flyer yellow + snow-sky blue */
 .ev-dumper{--ev:#5fc7c4;--ev2:#c4ced4;--ev-bg:#0c2c56} /* Big Dumper can teal + silver over Mariners navy */
+.ev-mash{--ev:#ff8a1f;--ev2:#b8f04a;--ev-bg:#24103a}   /* pumpkin orange + slime green over haunted purple */
 @media(max-width:640px){.event-grid{grid-template-columns:1fr}}
 
 /* drink board */
@@ -417,7 +418,7 @@ h2 em{font-style:normal;color:var(--neon-red);text-shadow:0 0 18px rgba(255,46,6
 }
 .drink-col h3{
   font-family:'Permanent Marker',cursive;font-weight:400;font-size:1.25rem;
-  margin-bottom:.9rem;padding-bottom:.4rem;border-bottom:2px dashed rgba(242,234,216,.2);
+  margin-bottom:.9rem;padding-bottom:.4rem;border-bottom:1px solid rgba(242,234,216,.2);
 }
 .drink-col h3{color:var(--chalk-orange)}
 .drink-col ul{list-style:none}
@@ -435,7 +436,7 @@ h2 em{font-style:normal;color:var(--neon-red);text-shadow:0 0 18px rgba(255,46,6
   display:flex;align-items:baseline;gap:.8rem;
   padding:.62rem 0;font-size:1.12rem;
 }
-.menu-list li .dots{flex:1;border-bottom:2px dotted rgba(242,234,216,.25);transform:translateY(-4px)}
+.menu-list li .dots{flex:1;border-bottom:1px solid rgba(242,234,216,.25);transform:translateY(-4px)}
 .menu-list li .price{font-family:'Passion One',sans-serif;font-weight:700;color:var(--chalk-yellow);font-size:1.45rem;line-height:1;letter-spacing:.02em}
 @media(max-width:840px){.grub-grid{grid-template-columns:1fr}}
 
@@ -455,53 +456,7 @@ h2 em{font-style:normal;color:var(--neon-red);text-shadow:0 0 18px rgba(255,46,6
 @media(max-width:840px){.gallery{grid-template-columns:1fr 1fr}.shot.wide{grid-column:span 2}}
 @media(max-width:540px){.gallery{grid-template-columns:1fr}.shot.wide{grid-column:span 1}}
 
-/* hall of fame — brass-on-walnut plaques like the ones on the bar wall */
-.hof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem;margin-top:2.6rem;align-items:start}
-.plaque{
-  --gold:#e7c878; --gold-dim:#9c7d3a;
-  position:relative;border-radius:7px;padding:14px;
-  background:
-    repeating-linear-gradient(90deg, rgba(0,0,0,.16) 0 2px, rgba(255,255,255,.025) 2px 5px),
-    linear-gradient(150deg,#5a3a22,#3f2715 55%,#2c1a0e);
-  box-shadow:0 20px 50px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,210,150,.25), inset 0 0 0 1px rgba(0,0,0,.4);
-}
-.plaque::after{content:"";position:absolute;inset:5px;border:1px solid rgba(231,200,120,.18);border-radius:4px;pointer-events:none}
-.plaque-screw{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:9px;height:9px;border-radius:50%;
-  background:radial-gradient(circle at 35% 30%, #f4d784, #7a5d24 70%);box-shadow:0 1px 2px rgba(0,0,0,.6)}
-.brass-head{
-  margin:14px 6px 12px;padding:.7rem .6rem;text-align:center;border-radius:3px;
-  background:linear-gradient(160deg,#15110a,#221a0e);
-  border:1.5px solid var(--gold-dim);
-  box-shadow:inset 0 0 12px rgba(0,0,0,.7);
-}
-.brass-head .bh-mark{
-  font-family:'Passion One',sans-serif;font-weight:700;font-size:1.3rem;letter-spacing:.08em;
-  color:var(--gold);text-shadow:0 1px 0 #000, 0 0 10px rgba(231,200,120,.25);
-}
-.brass-head .bh-sub{
-  font-family:serif;font-style:italic;font-size:.92rem;letter-spacing:.03em;
-  color:#d9be84;margin-top:.1rem;
-}
-.brass-head .bh-cols{display:flex;justify-content:space-around;margin-top:.35rem;
-  font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:#b89a58}
-.nameplates{display:flex;flex-direction:column;gap:7px;padding:0 6px 6px}
-.np{
-  display:block;padding:.45rem .6rem;border-radius:2px;text-align:center;
-  background:linear-gradient(160deg,#100c07,#1c150c);
-  border:1px solid var(--gold-dim);
-  box-shadow:inset 0 0 8px rgba(0,0,0,.6);
-}
-.np .yr{font-size:.62rem;letter-spacing:.16em;color:#a98e50;display:block}
-.np .who{font-family:serif;font-weight:600;font-size:.96rem;color:var(--gold);line-height:1.2}
-.np .who small{display:block;font-weight:400;font-size:.82rem;color:#cdb072}
-.np.two{display:flex;justify-content:space-between;gap:.5rem;text-align:left}
-.np.two .who{font-size:.82rem;flex:1}
-.np.two .who + .who{text-align:right}
-.np.crown{border-color:var(--gold);box-shadow:inset 0 0 10px rgba(231,200,120,.18), 0 0 14px rgba(231,200,120,.12)}
-.np.crown .who{color:#ffe9a8}
 .hof-note{margin-top:1.8rem;font-size:.9rem;color:var(--chalk-dim);font-style:italic}
-@media(max-width:900px){.hof-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:560px){.hof-grid{grid-template-columns:1fr}}
 
 /* google reviews */
 .rev-head{
@@ -554,10 +509,11 @@ h2 em{font-style:normal;color:var(--neon-red);text-shadow:0 0 18px rgba(255,46,6
 
 /* footer */
 .pay-note{
-  max-width:60ch;margin:3rem auto 0;padding-top:2.6rem;
+  max-width:60ch;margin:2.2rem auto 0;padding-top:1.6rem;
   border-top:1px solid var(--led-blue);
-  text-align:center;color:var(--chalk-dim);font-size:1.02rem;line-height:1.6;
+  text-align:center;color:var(--chalk-dim);font-size:1.25rem;line-height:1.55;
 }
+#visit{padding-bottom:3rem} /* the pay note closes the page; no 6rem gap before the footer */
 .pay-note strong{color:var(--chalk-yellow);font-weight:600;white-space:nowrap}
 footer{
   display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:.4rem 1.4rem; /* name left, address centred, credit right */
@@ -603,7 +559,6 @@ footer .credit:hover,footer .credit:focus-visible{color:var(--chalk)}
     <li><a href="#drinks">Drinks</a></li>
     <li><a href="#grub">Grub</a></li>
     <li><a href="#around">Around the Bar</a></li>
-    <li><a href="#champions">Champions</a></li>
     <li><a href="#reviews">Reviews</a></li>
     <li><a href="#visit">Find Us</a></li>
   </ul>
@@ -667,6 +622,12 @@ footer .credit:hover,footer .credit:focus-visible{color:var(--chalk)}
       <h2>What's <em>on</em></h2>
     </div>
     <div class="event-grid">
+      <div class="led reveal ev-mash" data-until="2026-10-31"><div class="board spec event">
+        <span class="when">Saturday, October 31 · 7 PM–close</span>
+        <h3>The Monster Mash</h3>
+        <p><b>Halloween night at the Fireplace.</b> Music with <b>DJ T-Dubb</b>, drink specials and a costume party.</p>
+        <p>Grab your friends, put on your best costume, and make it a Monster Mash to remember.</p>
+      </div></div>
       <div class="led reveal ev-dolly" data-until="2026-09-25"><div class="board spec event">
         <span class="when">September 25 · 7 PM–close</span>
         <h3>Dolly Day</h3>
@@ -855,74 +816,6 @@ footer .credit:hover,footer .credit:focus-visible{color:var(--chalk)}
       <figure class="shot reveal"><img src="assets/goldentee.webp" alt="Golden Tee arcade golf machine" loading="lazy"><figcaption>Golden Tee — $1 for 3 holes</figcaption></figure>
       <figure class="shot wide reveal"><img src="assets/patio.webp" alt="Covered back patio with picnic tables, string lights and vintage beer signs" loading="lazy"><figcaption>the patio — we even have sunscreen, ask the bartender</figcaption></figure>
     </div>
-  </section>
-
-  <section id="champions">
-    <div class="reveal">
-      <h2>House <em>champions</em></h2>
-      <p style="color:var(--chalk-dim);font-size:1.1rem;max-width:62ch">Bragging rights at The Fireplace are earned the hard way — over a pot of chili or a round of golf. These names are screwed into the wall in brass. Immortalized. Insufferable about it.</p>
-    </div>
-
-    <details class="story-collapse reveal" style="margin-top:2rem">
-      <summary class="story-summary"><span class="kicker">See the wall</span><span class="story-caret" aria-hidden="true"></span></summary>
-    <div class="hof-grid">
-
-      <div class="plaque reveal">
-        <i class="plaque-screw"></i>
-        <div class="brass-head">
-          <div class="bh-mark">Chili Cook-Off Champions</div>
-        </div>
-        <div class="nameplates">
-          <span class="np"><span class="yr">2008</span><span class="who">Tim Casper</span></span>
-          <span class="np"><span class="yr">2009</span><span class="who">Chris Britton</span></span>
-          <span class="np"><span class="yr">2010</span><span class="who">Don McLees</span></span>
-          <span class="np"><span class="yr">2011</span><span class="who">Tim Casper</span></span>
-          <span class="np"><span class="yr">2012</span><span class="who">Bill Searcy</span></span>
-          <span class="np"><span class="yr">2013</span><span class="who">Todd Hildenbrand</span></span>
-          <span class="np"><span class="yr">2014</span><span class="who">Todd Hildenbrand</span></span>
-          <span class="np crown"><span class="yr">2015</span><span class="who">Todd "3-Peat" Hildenbrand 👑</span></span>
-          <span class="np"><span class="yr">2016</span><span class="who">Sherry Lewis</span></span>
-          <span class="np"><span class="yr">2017</span><span class="who">Kim Fillioe</span></span>
-          <span class="np"><span class="yr">2018</span><span class="who">Len Berger &amp; Corey Martin</span></span>
-          <span class="np"><span class="yr">2019</span><span class="who">Len KB Berger</span></span>
-        </div>
-      </div>
-
-      <div class="plaque reveal">
-        <i class="plaque-screw"></i>
-        <div class="brass-head">
-          <div class="bh-mark">The Open Golf Tournament</div>
-          <div class="bh-cols"><span>Low Gross</span><span>Low Net</span></div>
-        </div>
-        <div class="nameplates">
-          <span class="np two"><span class="yr">'05</span><span class="who">Bill Searcy · Randy Erickson</span><span class="who">Pete Smeltz · Chris Britton</span></span>
-          <span class="np two"><span class="yr">'06</span><span class="who">Randy &amp; Becki Erickson</span><span class="who">Don McLees · Jackie Sharp</span></span>
-          <span class="np two"><span class="yr">'08</span><span class="who">Dan Coleman · Jim Westscott</span><span class="who">Tod, Kevin, Brian &amp; Ken</span></span>
-          <span class="np two"><span class="yr">'09</span><span class="who">Dan Coleman · Todd Hildenbrand</span><span class="who">Richard Boblet · Gay Peterson</span></span>
-          <span class="np two"><span class="yr">'10</span><span class="who">Dan Coleman · Todd Hildenbrand</span><span class="who">Tom Erickson · Pat Thomas</span></span>
-          <span class="np two"><span class="yr">'11</span><span class="who">Randy &amp; Kyle Erickson</span><span class="who">Randy &amp; Kyle Erickson</span></span>
-        </div>
-      </div>
-
-      <div class="plaque reveal">
-        <i class="plaque-screw"></i>
-        <div class="brass-head">
-          <div class="bh-mark">The Fall Classic Tournament</div>
-          <div class="bh-cols"><span>Low Gross</span><span>Low Net</span></div>
-        </div>
-        <div class="nameplates">
-          <span class="np two"><span class="yr">'12</span><span class="who">Willie Kahn · Andy Coe</span><span class="who">Chris Britton · Pete Smeltz</span></span>
-          <span class="np two"><span class="yr">'13</span><span class="who">Dominic Carbello · Dawn Angela</span><span class="who">Garth Baker · Tracie Martin</span></span>
-          <span class="np two"><span class="yr">'14</span><span class="who">Andy Coe · Willie Kahn</span><span class="who">Cathy Diehl · Bill Searcy</span></span>
-          <span class="np two"><span class="yr">'15</span><span class="who">Andy Coe · Willie Kahn</span><span class="who">Mike &amp; Marchel Sheehan</span></span>
-          <span class="np two"><span class="yr">'16</span><span class="who">Dan Coleman · Catfish Blackwell</span><span class="who">Gay Peterson · Lynn Wahlberg</span></span>
-          <span class="np two"><span class="yr">'17</span><span class="who">Dan Coleman · Catfish Blackwell</span><span class="who">Garth Baker · Chris Britton</span></span>
-        </div>
-      </div>
-
-    </div>
-    <p class="hof-note">Think you can be a winner? The cook-off and the tournaments come around every year — grab a bartender, throw your name in, and you could be the next one up on the wall.</p>
-    </details>
   </section>
 
   <section id="reviews">
