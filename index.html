@@ -407,7 +407,6 @@ h2 em{font-style:normal;color:var(--neon-red);text-shadow:0 0 18px rgba(255,46,6
 .ev-dolly{--ev:#ff4fa3;--ev2:#ffd1e8;--ev-bg:#2a1020}   /* marquee pink + rhinestone highlight over denim */
 .ev-hawks{--ev:#69be28;--ev2:#a5acaf;--ev-bg:#0b1f38}  /* action green + wolf grey over college navy */
 .ev-drive{--ev:#ffc82e;--ev2:#7fd3f2;--ev-bg:#122a3a}  /* flyer yellow + snow-sky blue */
-.ev-dumper{--ev:#5fc7c4;--ev2:#c4ced4;--ev-bg:#0c2c56} /* Big Dumper can teal + silver over Mariners navy */
 .ev-mash{--ev:#ff8a1f;--ev2:#b8f04a;--ev-bg:#24103a}   /* pumpkin orange + slime green over haunted purple */
 @media(max-width:640px){.event-grid{grid-template-columns:1fr}}
 
@@ -500,12 +499,8 @@ h2 em{font-style:normal;color:var(--neon-red);text-shadow:0 0 18px rgba(255,46,6
   border:1px solid rgba(255,46,62,.3);
   box-shadow:0 18px 45px rgba(0,0,0,.55), 0 0 30px rgba(255,46,62,.1);
 }
-.map-frame iframe{
-  display:block;
-  filter:invert(.92) hue-rotate(180deg) saturate(.85) brightness(.95) contrast(1.05);
-  transition:filter .4s ease;
-}
-.map-frame:hover iframe{filter:none}
+.map-frame #map{display:block;height:380px;background:#1a1a1a}
+.map-frame iframe{display:block}
 
 /* footer */
 .pay-note{
@@ -646,11 +641,6 @@ footer .credit:hover,footer .credit:focus-visible{color:var(--chalk)}
         <p><b>$2 off drinks</b> when you bring in new or slightly used coats, hats or gloves for kids in need. Socks need to be new.</p>
         <p>Let's keep kids warm this winter.</p>
       </div></div>
-      <div class="led reveal ev-dumper"><div class="board spec event">
-        <span class="when">Whenever the Mariners play</span>
-        <h3>$1 off Big Dumper</h3>
-        <p>Cal Raleigh's <b>Big Dumper</b> is on tap now — and it's a buck off any time the Mariners are playing.</p>
-      </div></div>
     </div>
   </section>
 
@@ -720,7 +710,7 @@ footer .credit:hover,footer .credit:focus-visible{color:var(--chalk)}
           <ul>
             <li>Coors Light</li>
             <li>Bodhizafa</li>
-            <li>One Tree <small>— passion guava</small></li>
+            <li>Soundbite <small>— Cherry Pie</small></li>
             <li>Manny's</li>
             <li>Big Dumper</li>
             <li>Modelo</li>
@@ -873,10 +863,11 @@ footer .credit:hover,footer .credit:focus-visible{color:var(--chalk)}
       </div>
     </div>
     <div class="map-frame reveal">
-      <iframe
+      <div id="map" role="img" aria-label="Map to The Fireplace Bar, 2320 Everett Ave, Everett WA"></div>
+      <noscript><iframe
         src="https://www.google.com/maps?q=The+Fireplace+Bar,+2320+Everett+Ave,+Everett,+WA+98201&output=embed"
-        width="100%" height="380" style="border:0" allowfullscreen="" loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade" title="Map to The Fireplace Bar, 2320 Everett Ave, Everett WA"></iframe>
+        width="100%" height="380" style="border:0" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade" title="Map to The Fireplace Bar, 2320 Everett Ave, Everett WA"></iframe></noscript>
     </div>
     <p class="pay-note reveal"><strong>21+ only</strong> — no vertical IDs<br><strong>Cash or Credit only — no tap</strong> · ATM on site<br>Free parking in the back lot</p>
   </section>
@@ -910,6 +901,27 @@ footer .credit:hover,footer .credit:focus-visible{color:var(--chalk)}
 // the END of that day (local time), then is removed; the nav link and section
 // go too if nothing is left. Undated cards are ongoing and never expire.
 (function () {
+  // Google Maps JavaScript API: native dark scheme, no scroll-guard overlay.
+  // The key (Google Cloud, steve@ghostwoodlabs.com) is referrer-restricted to our own domains.
+  window.initMap = function () {
+    const here = { lat: 47.9816448, lng: -122.1975084 };
+    const map = new google.maps.Map(document.getElementById('map'), {
+      center: here, zoom: 16,
+      colorScheme: google.maps.ColorScheme.DARK,
+      gestureHandling: 'greedy',
+      mapTypeControl: false, streetViewControl: false, fullscreenControl: true,
+    });
+    const pin = new google.maps.Marker({ position: here, map, title: 'The Fireplace Bar' });
+    const card = new google.maps.InfoWindow({
+      content: '<div style="color:#111;font:14px/1.4 system-ui,sans-serif;padding:2px 4px"><b>The Fireplace Bar</b><br>2320 Everett Ave, Everett, WA 98201<br>'
+        + '<a href="https://maps.google.com/?q=The+Fireplace+Bar,+2320+Everett+Ave,+Everett,+WA+98201" target="_blank" rel="noopener">Open in Google Maps</a></div>',
+    });
+    pin.addListener('click', () => card.open({ map, anchor: pin }));
+  };
+  const mapScript = document.createElement('script');
+  mapScript.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCZWq9QIiyvNMvoO__Gr9L5qlcx4gfJ8nQ&loading=async&callback=initMap';
+  mapScript.async = true;
+  document.head.appendChild(mapScript);
   const today = new Date(); today.setHours(0, 0, 0, 0);
   document.querySelectorAll('#events [data-until]').forEach((card) => {
     const [y, m, d] = card.dataset.until.split('-').map(Number);
